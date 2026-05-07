@@ -1,6 +1,11 @@
 import { isLocale } from "@/config/i18n";
 import { notFound } from "next/navigation";
-import { getTranslations } from "next-intl/server";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
+import { makeQueryClient } from "@/lib/react-query/query-client";
+import { TokenList } from "@/components/price/token-list";
+import { tokensQueryOptions } from "@/services/price.queries";
+
+export const dynamic = "force-dynamic";
 
 type Props = {
   params: Promise<{
@@ -15,13 +20,23 @@ export default async function HomePage({ params }: Props) {
     notFound();
   }
 
-  const t = await getTranslations("common");
+  const queryClient = makeQueryClient();
+  let priceError: string | null = null;
+
+  try {
+    await queryClient.fetchQuery(tokensQueryOptions);
+  } catch (error) {
+    priceError =
+      error instanceof Error
+        ? error.message
+        : "Price service failed for an unknown reason";
+  }
 
   return (
-    <main className="flex mx-auto w-3/4  bg-(--background) text-(--foreground)">
-      <h1>
-        {t("title")} ({locale})
-      </h1>
+    <main className="mx-auto flex w-3/4 flex-col gap-4 bg-(--background) py-6 text-(--foreground)">
+      <HydrationBoundary state={dehydrate(queryClient)}>
+        <TokenList initialError={priceError} locale={locale} />
+      </HydrationBoundary>
     </main>
   );
 }
