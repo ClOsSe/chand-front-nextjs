@@ -4,8 +4,11 @@
   --background: #ffffff;
   --foreground: #171717;
 }
-
-body {
+.dark {
+  --background:oklch(12.9% 0.042 264.695);
+  --foreground:oklch(96.8% 0.007 247.896);
+}
+body{
   background: var(--background);
   color: var(--foreground);
 }
