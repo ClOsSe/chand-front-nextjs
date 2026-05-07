@@ -1,18 +1,14 @@
+import { Locale } from "@/config/i18n";
 import { getTranslations } from "next-intl/server";
 
 type Props = {
   params: Promise<{
-    locale: string;
+    locale: Locale;
   }>;
 };
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
-
-  const t = await getTranslations({
-    locale,
-    namespace: "common",
-  });
-
+  const t = await getTranslations("common");
   return (
     <main className="min-h-screen bg-(--background) text-(--foreground)">
       <h1>
