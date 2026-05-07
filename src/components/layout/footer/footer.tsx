@@ -1,4 +1,3 @@
-import { CalendarType } from "@/types/settings";
 import { CountrySelector } from "./country-selector";
 import { Menu } from "./menu/menu";
 

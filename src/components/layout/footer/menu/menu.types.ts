@@ -4,19 +4,19 @@ import type { LucideIcon } from "lucide-react";
 export type Theme = "dark" | "light";
 
 export type MenuActionContext = {
-  locale:string;
-  theme:Theme;
+  locale: string;
+  theme: Theme;
   calendarType: CalendarType;
-  changeLocale:( locale: "fa" | "en" ) => void;
-  setThemeMode:( theme:Theme ) => void;
+  changeLocale: (locale: "fa" | "en") => void;
+  setThemeMode: (theme: Theme) => void;
   setCalendarType: (type: CalendarType) => void;
 };
 
 export type MenuItem = {
-  label:string;
-  icon?:LucideIcon;
-  href?:string;
-  children?:MenuItem[];
-  onClick?:( ctx: MenuActionContext ) => void;
-  isActive?:( ctx: MenuActionContext ) => void;
-}
+  label: string;
+  icon?: LucideIcon;
+  href?: string;
+  children?: MenuItem[];
+  onClick?: (ctx: MenuActionContext) => void;
+  isActive?: (ctx: MenuActionContext) => boolean;
+};

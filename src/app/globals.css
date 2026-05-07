@@ -1,7 +1,17 @@
 @import "tailwindcss";
+
 :root {
   --background: oklch(98.4% 0.003 247.858);
   --foreground: oklch(12.9% 0.042 264.695);
+  --btnForeground: oklch(12.9% 0.042 264.695);
+
+  --menu-bg: oklch(98.4% 0.003 247.858);
+  --menu-fg: oklch(12.9% 0.042 264.695);
+  --menu-border: oklch(86.9% 0.022 252.894);
+  --submenu-bg: oklch(98.4% 0.003 247.858);
+  --submenu-fg: oklch(12.9% 0.042 264.695);
+  --submenu-active-bg: oklch(92.9% 0.013 255.508);
+  --submenu-active-fg: oklch(12.9% 0.042 264.695);
 
   /* footer/menu base */
   --nav-bg: oklch(92.9% 0.013 255.508); /* slate-200 */
@@ -19,12 +29,17 @@
 }
 
 .dark {
-
-  --menu-bg:oklch(12.9% 0.042 264.695); /* slate-950 */
-  --menu-fg:oklch(70.4% 0.04 256.788); /* slate-400 */
-
   --background: oklch(12.9% 0.042 264.695); /* slate-950 */
   --foreground: oklch(96.8% 0.007 247.896); /* slate-200 */
+  --btnForeground: oklch(96.8% 0.007 247.896);
+
+  --menu-bg: oklch(12.9% 0.042 264.695); /* slate-950 */
+  --menu-fg: oklch(70.4% 0.04 256.788); /* slate-400 */
+  --menu-border: oklch(27.9% 0.041 260.031); /* slate-800 */
+  --submenu-bg: oklch(17.8% 0.037 265.754); /* slate-900 */
+  --submenu-fg: oklch(86.9% 0.022 252.894); /* slate-300 */
+  --submenu-active-bg: oklch(27.9% 0.041 260.031); /* slate-800 */
+  --submenu-active-fg: oklch(86.9% 0.022 252.894); /* slate-300 */
 
   /* footer/menu base */
   --nav-bg: oklch(17.8% 0.037 265.754); /* slate-900 */
@@ -42,10 +57,6 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-}
-body{
   background: var(--background);
   color: var(--foreground);
 }
