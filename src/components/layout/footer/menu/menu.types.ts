@@ -1,3 +1,4 @@
+import { CalendarType } from "@/types/settings";
 import type { LucideIcon } from "lucide-react";
 
 export type Theme = "dark" | "light";
@@ -5,8 +6,10 @@ export type Theme = "dark" | "light";
 export type MenuActionContext = {
   locale:string;
   theme:Theme;
+  calendarType: CalendarType;
   changeLocale:( locale: "fa" | "en" ) => void;
   setThemeMode:( theme:Theme ) => void;
+  setCalendarType: (type: CalendarType) => void;
 };
 
 export type MenuItem = {

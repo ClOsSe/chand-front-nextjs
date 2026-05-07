@@ -86,8 +86,18 @@ export const menuItems: MenuItem[] = [
     label: "calender",
     icon: Calendar,
     children: [
-      { label: "persian", icon: CalendarRange },
-      { label: "georgian", icon: CalendarRange },
+      { 
+        label: "persian",
+        icon: CalendarRange,
+        onClick: ({ setCalendarType }) => setCalendarType("jalali"),
+        isActive: ({ calendarType }) => calendarType === "jalali",
+      },
+      { 
+        label: "georgian",
+        icon: CalendarRange,
+        onClick: ({ setCalendarType }) => setCalendarType("gregorian"),
+        isActive: ({ calendarType }) => calendarType === "gregorian", 
+      },
     ],
   },
   {

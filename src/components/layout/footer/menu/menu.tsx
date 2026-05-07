@@ -11,8 +11,11 @@ import { menuItems } from "./menu.items";
 import type { MenuActionContext, MenuItem, Theme } from "./menu.types";
 import { MenuRow } from "./menu-row";
 import { SubMenu } from "./submenu";
+import { useAppDispatch, useAppSelector } from "@/store/hooks";
+import { setCalendarType } from "@/store/slices/settings.slice";
 
 export function Menu() {
+  const dispatch = useAppDispatch();
   const t = useTranslations("menu");
   const locale = useLocale();
   const router = useRouter();
@@ -27,6 +30,11 @@ export function Menu() {
 
   const currentTheme: Theme = theme === "dark" ? "dark" : "light";
 
+  const calendarType = useAppSelector((state) => state.settings.calendarType);
+  const handleCalendarTypeChange = (type: "jalali" | "gregorian") => {
+    dispatch(setCalendarType(type));
+  };
+
   const ctx: MenuActionContext = {
     locale,
     theme: currentTheme,
@@ -34,6 +42,8 @@ export function Menu() {
       router.replace(pathname, { locale: newLocale });
     },
     setThemeMode: setTheme,
+    calendarType,
+    setCalendarType: handleCalendarTypeChange,
   };
 
   return (
@@ -42,7 +52,7 @@ export function Menu() {
         <div
           dir={isRtl ? "rtl" : "ltr"}
           className={[
-            "absolute bottom-12 w-60 overflow-visible rounded-xl bg-(--menu-bg) text-(--menu-fg) shadow-xl",
+            "absolute bottom-12 w-60 overflow-visible rounded-xl bg-(--menu-bg) text-(--menu-fg) shadow-lg/20 shadow-slate-950",
             isRtl ? "right-0" : "left-0",
           ].join(" ")}
         >

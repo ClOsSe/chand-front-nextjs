@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import { Calendar } from "./calendar";
 export default function Header() {
   return (
     <header className="border-b border-slate-300  bg-(--background) ">
@@ -6,7 +7,9 @@ export default function Header() {
         <Link href="/" className="text-lg font-semibold">
           Now Chand
         </Link>
-        <div className="flex items-center gap-2">Date</div>
+        <div className="flex items-center gap-2">
+          <Calendar />
+        </div>
       </div>
     </header>
   );
