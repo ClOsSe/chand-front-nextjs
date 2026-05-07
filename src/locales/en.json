@@ -1,5 +1,35 @@
 {
   "common": {
     "title": "Now Chand?!"
+  },
+  "theme": {
+    "light": "Light Mode",
+    "dark": "Dark Mode"
+  },
+  "menu": {
+    "viewModel": "View Model",
+    "priceChangeColor": "Price Change Color",
+    "buyPrice": "Buy Price",
+    "calender": "Calender",
+    "language": "Language",
+    "socialMedia": "Social Media",
+    "website": "Website",
+    "cardView": "Card View",
+    "listView": "List View",
+    "compactView": "Compact View",
+    "redGreen": "Red",
+    "greenRed": "Green",
+    "persian": "Persian",
+    "english": "English",
+    "telegram": "Telegram",
+    "instagram": "Instagram",
+    "youtube": "Youtube",
+    "x": "X",
+    "hidden": "Hidden",
+    "showIfAvailable": "Show If Available",
+    "georgian": "Georgian",
+    "theme": "Theme",
+    "light": "Light Mode",
+    "dark": "Dark Mode"
   }
 }

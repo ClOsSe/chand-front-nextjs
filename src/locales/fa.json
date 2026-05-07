@@ -1,5 +1,35 @@
 {
   "common": {
     "title": "Now Chand?!"
+  },
+  "theme": {
+    "light": "تم روشن",
+    "dark": "تم تیره"
+  },
+  "menu": {
+    "viewModel": "مدل نمایش",
+    "priceChangeColor": "رنگ تغیر قیمت",
+    "buyPrice": "قیمت خرید",
+    "calender": "تقویم",
+    "language": "زبان",
+    "socialMedia": "شبکه های اجتماعی",
+    "website": "وب سایت",
+    "cardView": "جدول",
+    "listView": "لیست",
+    "compactView": "Compact View",
+    "redGreen": "قرمز",
+    "greenRed": "سبز",
+    "persian": "فارسی",
+    "english": "English",
+    "telegram": "تلگرام",
+    "instagram": "اینستاگرام",
+    "youtube": "یوتیوب",
+    "x": "X",
+    "hidden": "مخفی",
+    "showIfAvailable": "نمایش در صورت موجود بودن",
+    "georgian": "میلادی",
+    "theme": "تم",
+    "light": "تم روشن",
+    "dark": "تم تیره"
   }
 }

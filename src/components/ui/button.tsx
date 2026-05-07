@@ -14,8 +14,7 @@ const variants: Record<ButtonVariant, string> = {
     "bg-zinc-950 text-zinc-50 hover:bg-zinc-800 dark:bg-zinc-50 dark:text-zinc-950 dark:hover:bg-zinc-200",
   secondary:
     "bg-zinc-100 text-zinc-950 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-50 dark:hover:bg-zinc-700",
-  ghost:
-    "text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800",
+  ghost: "text-(--btnForeground) bg-none",
 };
 
 const sizes: Record<ButtonSize, string> = {

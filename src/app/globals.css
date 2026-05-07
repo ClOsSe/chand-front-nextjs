@@ -1,12 +1,45 @@
 @import "tailwindcss";
-
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: oklch(98.4% 0.003 247.858);
+  --foreground: oklch(12.9% 0.042 264.695);
+
+  /* footer/menu base */
+  --nav-bg: oklch(92.9% 0.013 255.508); /* slate-200 */
+  --nav-fg: oklch(12.9% 0.042 264.695); /* slate-950 */
+
+  /* active tab */
+  --tab-active-bg: oklch(98.4% 0.003 247.858); /* slate-100 */
+  --tab-active-fg: oklch(12.9% 0.042 264.695); /* slate-950 */
+
+  /* inactive tab */
+  --tab-inactive-bg: transparent;
+  --tab-inactive-fg: oklch(44.6% 0.043 257.281); /* slate-600 */
+
+  --border: oklch(86.9% 0.022 252.894); /* slate-300 */
 }
+
 .dark {
-  --background:oklch(12.9% 0.042 264.695);
-  --foreground:oklch(96.8% 0.007 247.896);
+  --background: oklch(12.9% 0.042 264.695); /* slate-950 */
+  --foreground: oklch(98.4% 0.003 247.858); /* slate-100 */
+
+  /* footer/menu base */
+  --nav-bg: oklch(17.8% 0.037 265.754); /* slate-900 */
+  --nav-fg: oklch(96.8% 0.007 247.896); /* slate-200 */
+
+  /* active tab */
+  --tab-active-bg: oklch(27.9% 0.041 260.031); /* slate-800 */
+  --tab-active-fg: oklch(98.4% 0.003 247.858); /* slate-100 */
+
+  /* inactive tab */
+  --tab-inactive-bg: transparent;
+  --tab-inactive-fg: oklch(70.4% 0.04 256.788); /* slate-400 */
+
+  --border: oklch(27.9% 0.041 260.031); /* slate-800 */
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
 }
 body{
   background: var(--background);

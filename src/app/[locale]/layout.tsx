@@ -3,7 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { locales, type Locale } from "@/config/i18n";
 import Header from "@/components/layout/header";
-import Footer from "@/components/layout/footer";
+import Footer from "@/components/layout/footer/footer";
 
 type Props = {
   children: ReactNode;
@@ -29,10 +29,10 @@ export default async function LocaleLayout({ children, params }: Props) {
   const direction = localeDirections[locale];
 
   return (
-    <div lang={locale} dir={direction}>
+    <div lang={locale} dir={direction} className="flex min-h-screen flex-col">
       <NextIntlClientProvider locale={locale} messages={messages}>
         <Header />
-        {children}
+        <main className="flex-1">{children}</main>
         <Footer />
       </NextIntlClientProvider>
     </div>
