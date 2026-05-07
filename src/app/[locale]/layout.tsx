@@ -13,8 +13,12 @@ type Props = {
 export default async function LocaleLayout({ children, params }: Props) {
   const { locale } = await params;
   const messages = await getMessages({ locale });
+  const localeDirections = {
+    fa: "rtl",
+    en: "ltr",
+  } as const;
 
-  const direction = locale === "fa" ? "rtl" : "ltr";
+  const direction = localeDirections[locale];
 
   return (
     <div lang={locale} dir={direction}>
