@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 export default function Header() {
   return (
     <header className="border-b border-zinc-200 bg-(--background) dark:border-zinc-800">
