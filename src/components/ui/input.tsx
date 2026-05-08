@@ -1,3 +1,4 @@
+import { Link } from "@/i18n/navigation";
 import { InputHTMLAttributes } from "react";
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
@@ -7,6 +8,7 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
   type?: "password" | "text" | "email" | "number";
   showForgetPassword?: boolean;
+  forgetPasswordURL?: string;
 };
 
 export default function Input({
@@ -15,7 +17,8 @@ export default function Input({
   type,
   className,
   error,
-  showForgetPassword,
+  showForgetPassword = false,
+  forgetPasswordURL = "",
   ...props
 }: Props) {
   return (
@@ -26,10 +29,13 @@ export default function Input({
           className="text-sm font-medium mx-1 flex justify-between"
         >
           {label}
-          {!showForgetPassword && (
-            <span className="font-medium tracking-tight">
+          {showForgetPassword && (
+            <Link
+              href={forgetPasswordURL}
+              className="font-medium tracking-tight"
+            >
               Forget Your Password?
-            </span>
+            </Link>
           )}
         </label>
       )}

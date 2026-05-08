@@ -35,7 +35,9 @@ export default function LoginPage() {
               </p>
             </div>
             <Link href="/register">
-              <h3>Sign Up</h3>
+              <h3 className="hover:border-b hover:border-amber-50 text-center">
+                Sign Up
+              </h3>
             </Link>
           </div>
           <div className="mt-5">
@@ -58,6 +60,8 @@ export default function LoginPage() {
               type="password"
               onChange={(e) => setEmail(e.target.value)}
               error={emailError}
+              showForgetPassword
+              forgetPasswordURL="/forget"
             />
           </div>
         </div>
