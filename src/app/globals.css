@@ -31,6 +31,15 @@
 .dark {
   --background: oklch(12.9% 0.042 264.695); /* slate-950 */
   --foreground: oklch(96.8% 0.007 247.896); /* slate-200 */
+
+
+  --cardBackground: oklch(27.9% 0.041 260.031); /* slate-800 */
+  --cardForeground: oklch(96.8% 0.007 247.896); /* slate-200 */
+  --cardBorder: oklch(17.8% 0.037 265.754); /* slate-900 */
+  
+  --inputBackground: oklch(37.3% 0.034 259.733); /* grey-700 */
+
+
   --btnForeground: oklch(96.8% 0.007 247.896);
 
   --menu-bg: oklch(12.9% 0.042 264.695); /* slate-950 */

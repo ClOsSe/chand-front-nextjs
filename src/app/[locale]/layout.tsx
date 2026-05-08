@@ -7,7 +7,7 @@ import { isLocale, locales } from "@/config/i18n";
 import { AppProviders } from "@/providers/app";
 import Footer from "@/components/layout/footer/footer";
 import Header from "@/components/layout/header/header";
-import "../globals.css";
+import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "Chand",
