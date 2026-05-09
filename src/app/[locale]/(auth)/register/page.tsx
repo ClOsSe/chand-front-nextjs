@@ -5,6 +5,10 @@ import { Link } from "@/i18n/navigation";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "@/i18n/navigation";
+import { registerMutationOptions } from "@/services/auth/auth.queries";
+
 import { useForm } from "react-hook-form";
 import z from "zod";
 
@@ -20,7 +24,7 @@ export const createRegisterFormSchema = (t: (key: string) => string) => {
       confirmPassword: z.string().min(1, t("errors.requiredConfirmPassword")),
     })
     .refine((data) => data.password === data.confirmPassword, {
-      message: t("error.passwordsNotMatch"),
+      message: t("errors.passwordsNotMatch"),
       path: ["confirmPassword"],
     });
 };
@@ -31,6 +35,18 @@ type RegisterAccountValues = z.infer<
 
 export default function RegisterPage() {
   const t = useTranslations("auth");
+
+  const router = useRouter();
+  const registerMutation = useMutation({
+    ...registerMutationOptions,
+    onSuccess: () => {
+      router.push("/");
+    },
+    onError: (error) => {
+      console.error("[register]", error);
+    },
+  });
+
   const registerAccountSchema = createRegisterFormSchema(t);
 
   const {
@@ -49,6 +65,7 @@ export default function RegisterPage() {
   function onSubmit(values: RegisterAccountValues) {
     console.log(values);
     // todo: call api
+    registerMutation.mutate(values);
   }
 
   return (
@@ -104,10 +121,20 @@ export default function RegisterPage() {
               error={errors.confirmPassword?.message}
             />
           </div>
+          {registerMutation.isError && (
+            <p className="mt-3 text-sm text-red-500">
+              {registerMutation.error.message}
+            </p>
+          )}
         </div>
         <div className="grid grid-flow-row">
-          <Button variant="primary" className="mt-5 py-5" type="submit">
-            {t("signUp")}
+          <Button
+            variant="primary"
+            className="mt-5 py-5"
+            type="submit"
+            disabled={isSubmitting || registerMutation.isPending}
+          >
+            {registerMutation.isPending ? t("sending") : t("signUp")}
           </Button>
         </div>
       </div>

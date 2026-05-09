@@ -32,8 +32,14 @@ export default function proxy(request:NextRequest){
   const locale = getLocale(pathname);
 
   const token = request.cookies.get('token')?.value;
+  console.log("pathname:", pathname);
+  console.log("cookies:", request.cookies.getAll());
+  console.log("token:", token);
+  
   const isLoggedIn = Boolean(token);
   const isPublic = isPublicPath(pathname,locale);
+
+
 
   if(!isLoggedIn && !isPublic){
     const url = request.nextUrl.clone();
@@ -41,6 +47,8 @@ export default function proxy(request:NextRequest){
 
     return NextResponse.redirect(url)
   }
+
+
   if(isLoggedIn && pathname === `/${locale}/login`){
     const url = request.nextUrl.clone();
     url.pathname = `/${locale}`;
