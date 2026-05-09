@@ -26,7 +26,7 @@ export function SubMenu({ items, t, ctx, isRtl }: Props) {
             type="button"
             onClick={() => child.onClick?.(ctx)}
             className={[
-              "flex w-full items-center justify-between border-b border-(--menu-border) px-4 py-3 text-sm transition",
+              "flex w-full items-center justify-between border-b border-(--menu-border) px-4 py-3 text-sm transition  hover:cursor-pointer ",
               isActive
                 ? "bg-(--submenu-active-bg) text-(--submenu-active-fg)"
                 : "text-(--tab-inactive-fg)",

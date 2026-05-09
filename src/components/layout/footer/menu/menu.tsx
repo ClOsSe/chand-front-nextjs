@@ -22,7 +22,7 @@ export function Menu() {
   const locale = useLocale();
   const router = useRouter();
   const pathname = usePathname();
-  const { theme, setTheme } = useTheme();
+  const { resolvedTheme, setTheme } = useTheme();
 
   const isRtl = locale === "fa";
   const ArrowIcon = isRtl ? ChevronLeft : ChevronRight;
@@ -30,7 +30,7 @@ export function Menu() {
   const [open, setOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
 
-  const currentTheme: Theme = theme === "dark" ? "dark" : "light";
+  const currentTheme: Theme = resolvedTheme === "dark" ? "dark" : "light";
 
   const calendarType = useAppSelector((state) => state.settings.calendarType);
 

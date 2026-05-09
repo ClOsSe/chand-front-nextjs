@@ -19,9 +19,9 @@ export default async function MainLayout({ children, params }: Props) {
 
   const token = cookieStore.get("token")?.value;
 
-  if (!token) {
-    redirect(`/${locale}/login`);
-  }
+  // if (!token) {
+  //   redirect(`/${locale}/login`);
+  // }
 
   return (
     <div className="flex min-h-screen flex-col">
