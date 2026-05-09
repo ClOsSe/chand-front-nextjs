@@ -2,13 +2,16 @@
 import { Button } from "@/components/ui";
 import Input from "@/components/ui/input";
 import { Link } from "@/i18n/navigation";
+import { loginMutationOptions } from "@/services/auth/auth.queries";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/router";
 
 import { useForm } from "react-hook-form";
 import z from "zod";
 
-export const createLoginSchema = (t: (key: string) => string) => {
+const createLoginSchema = (t: (key: string) => string) => {
   return z.object({
     email: z
       .string()
@@ -23,6 +26,16 @@ type LoginFormValues = z.infer<ReturnType<typeof createLoginSchema>>;
 
 export default function LoginPage() {
   const t = useTranslations("auth");
+  const router = useRouter();
+  const loginMutation = useMutation({
+    ...loginMutationOptions,
+    onSuccess: () => {
+      router.push("/");
+    },
+    onError: (error) => {
+      console.error("[login]", error);
+    },
+  });
   const loginSchema = createLoginSchema(t);
 
   const {
@@ -37,16 +50,7 @@ export default function LoginPage() {
     },
   });
   function onSubmit(values: LoginFormValues) {
-    console.log(values);
-    // submit api
-
-    // response.cookies.set("token", token, {
-    //   httpOnly: true,
-    //   secure: process.env.NODE_ENV === "production",
-    //   sameSite: "lax",
-    //   path: "/",
-    //   maxAge: 60 * 60 * 24 * 7,
-    // });
+    loginMutation.mutate(values);
   }
 
   return (

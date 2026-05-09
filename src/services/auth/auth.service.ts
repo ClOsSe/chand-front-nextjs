@@ -28,7 +28,7 @@ export type AuthResponse = {
 export async function registerUser(
   payload: RegisterPayload
 ): Promise<AuthResponse> {
-  const { data } = await api.post<AuthResponse>("/auth/register", payload);
+  const { data } = await api.post<AuthResponse>("/api/auth/register", payload);
 
   return data;
 }
@@ -36,7 +36,7 @@ export async function registerUser(
 export async function loginUser(
   payload: LoginPayload
 ): Promise<AuthResponse> {
-  const { data } = await api.post<AuthResponse>("/auth/login", payload);
+  const { data } = await api.post<AuthResponse>("/api/auth/login", payload);
 
   return data;
 }
@@ -45,7 +45,7 @@ export async function forgotPassword(
   payload: ForgotPasswordPayload
 ): Promise<{ message: string }> {
   const { data } = await api.post<{ message: string }>(
-    "/auth/forgot-password",
+    "api/auth/forgot-password",
     payload
   );
 
@@ -53,7 +53,7 @@ export async function forgotPassword(
 }
 
 export async function logoutUser(): Promise<{ message: string }> {
-  const { data } = await api.post<{ message: string }>("/auth/logout");
+  const { data } = await api.post<{ message: string }>("api/auth/logout");
 
   return data;
 }

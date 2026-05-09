@@ -3,11 +3,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
+
 import { isLocale, locales } from "@/config/i18n";
 import { AppProviders } from "@/providers/app";
-import Footer from "@/components/layout/footer/footer";
-import Header from "@/components/layout/header/header";
-import "@/app/globals.css";
 
 export const metadata: Metadata = {
   title: "Chand",
@@ -36,26 +34,15 @@ export default async function LocaleLayout({ children, params }: Props) {
 
   const messages = await getMessages({ locale });
 
-  const localeDirections = {
-    fa: "rtl",
-    en: "ltr",
-  } as const;
-
-  const direction = localeDirections[locale];
+  const direction = locale === "fa" ? "rtl" : "ltr";
 
   return (
-    <html lang={locale} dir={direction} suppressHydrationWarning>
-      <body>
-        <AppProviders>
-          <NextIntlClientProvider locale={locale} messages={messages}>
-            <div className="flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-            </div>
-          </NextIntlClientProvider>
-        </AppProviders>
-      </body>
-    </html>
+    <div lang={locale} dir={direction}>
+      <AppProviders>
+        <NextIntlClientProvider locale={locale} messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+      </AppProviders>
+    </div>
   );
 }

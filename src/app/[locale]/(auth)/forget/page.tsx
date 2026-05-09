@@ -2,13 +2,16 @@
 import { Button } from "@/components/ui";
 import Input from "@/components/ui/input";
 import { Link } from "@/i18n/navigation";
+import { forgotPasswordMutationOptions } from "@/services/auth/auth.queries";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
+import { useRouter } from "next/router";
 
 import { useForm } from "react-hook-form";
 import z from "zod";
 
-export const createForgetPasswordSchema = (t: (key: string) => string) => {
+const createForgetPasswordSchema = (t: (key: string) => string) => {
   return z.object({
     email: z
       .string()
@@ -21,6 +24,16 @@ type ForgetPasswordFormValues = z.infer<
 >;
 export default function ForgetPage() {
   const t = useTranslations("auth");
+  const router = useRouter();
+  const forgetPassMutation = useMutation({
+    ...forgotPasswordMutationOptions,
+    onSuccess: () => {
+      router.push("/login");
+    },
+    onError: (error) => {
+      console.error("[register]", error);
+    },
+  });
   const forgetPasswordSchema = createForgetPasswordSchema(t);
 
   const {
@@ -34,8 +47,7 @@ export default function ForgetPage() {
     },
   });
   function onSubmit(values: ForgetPasswordFormValues) {
-    console.log(values);
-    // call service
+    forgetPassMutation.mutate(values);
   }
 
   return (

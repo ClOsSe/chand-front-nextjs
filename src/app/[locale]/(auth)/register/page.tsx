@@ -12,7 +12,7 @@ import { registerMutationOptions } from "@/services/auth/auth.queries";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
-export const createRegisterFormSchema = (t: (key: string) => string) => {
+const createRegisterFormSchema = (t: (key: string) => string) => {
   return z
     .object({
       email: z
@@ -63,8 +63,6 @@ export default function RegisterPage() {
   });
 
   function onSubmit(values: RegisterAccountValues) {
-    console.log(values);
-    // todo: call api
     registerMutation.mutate(values);
   }
 
