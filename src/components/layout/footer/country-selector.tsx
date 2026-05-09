@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Check, Plus } from "lucide-react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
 import { Button } from "@/components/ui";
 import { getTokenIcon } from "@/lib/price/token-icon";
@@ -12,6 +12,7 @@ import { getTokenKey } from "@/lib/price/token-key";
 import { tokensQueryOptions } from "@/services/price.queries";
 
 export function CountrySelector() {
+  const t = useTranslations("common");
   const [open, setOpen] = useState(false);
   const locale = useLocale();
   const dispatch = useAppDispatch();
@@ -34,14 +35,12 @@ export function CountrySelector() {
         >
           {isPending && (
             <div className="px-4 py-3 text-sm text-(--tab-inactive-fg)">
-              Loading...
+              {t("loadingFailed")}
             </div>
           )}
 
           {error && (
-            <div className="px-4 py-3 text-sm text-red-500">
-              Could not load list.
-            </div>
+            <div className="px-4 py-3 text-sm text-red-500">{t("loading")}</div>
           )}
 
           {!isPending &&
@@ -88,6 +87,7 @@ export function CountrySelector() {
         size="sm"
         type="button"
         variant="ghost"
+        name="load counrty list"
         onClick={() => setOpen((prev) => !prev)}
       >
         <Plus className="h-5 w-5" />
