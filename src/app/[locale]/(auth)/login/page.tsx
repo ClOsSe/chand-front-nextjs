@@ -2,37 +2,48 @@
 import { Button } from "@/components/ui";
 import Input from "@/components/ui/input";
 import { Link } from "@/i18n/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import z from "zod";
+
+export const createLoginSchema = (t: (key: string) => string) => {
+  return z.object({
+    email: z
+      .string()
+      .min(1, t("errors.requiredEmail"))
+      .email(t("errors.invalidEmail")),
+
+    password: z.string().min(8, t("errors.invalidPassword")),
+  });
+};
+
+type LoginFormValues = z.infer<ReturnType<typeof createLoginSchema>>;
 
 export default function LoginPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
   const t = useTranslations("auth");
+  const loginSchema = createLoginSchema(t);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    setEmailError("");
-    setPassword("");
-
-    if (!email.trim()) {
-      setEmailError(t("errors.emptyEmail"));
-
-      return;
-    }
-    if (!password.trim()) {
-      setPasswordError(t("errors.emptyPassword"));
-      return;
-    }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<LoginFormValues>({
+    resolver: zodResolver(loginSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+    },
+  });
+  function onSubmit(values: LoginFormValues) {
+    console.log(values);
+    // submit api
   }
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className="flex mx-auto w-96 bg-(--cardBackground) text-(--cardForeground) border-nonw shadow-2xl/30 p-4 rounded-2xl justify-center"
     >
       <div className="grid grid-flow-row auto-rows-max w-100 content-between ">
@@ -57,8 +68,8 @@ export default function LoginPage() {
               placeholder={t("exampleEmail")}
               id="1"
               type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              error={emailError}
+              {...register("email")}
+              error={errors.email?.message}
             />
           </div>
           <div className="mt-2">
@@ -68,16 +79,16 @@ export default function LoginPage() {
               placeholder={t("password")}
               id="2"
               type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              error={passwordError}
               showForgetPassword
+              {...register("password")}
+              error={errors.password?.message}
               forgetPasswordURL="/forget"
             />
           </div>
         </div>
         <div className="grid grid-flow-row">
           <Button variant="primary" className="mt-5 py-5" type="submit">
-            {t("login")}
+            {isSubmitting ? t("sending") : t("login")}
           </Button>
           <Button variant="secondary" className="mt-2 py-4" disabled>
             {t("loginWithGoogle")}

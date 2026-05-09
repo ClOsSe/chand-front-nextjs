@@ -45,13 +45,21 @@
     "recoverYourPasswordDescription": "Enter your email below to send recovery email",
     "exampleEmail": "example@gmail.com",
     "send": "Send",
+    "sending": "Sending...",
     "createAccountTitle": "Create Account",
     "createAccountDescription": "Enter your email below and choose an strong password",
     "repeatPassword": "Repeat Password",
     "errors": {
       "emptyEmail": "Enter Your Email",
+      "requiredEmail": "Enter is Required",
+      "invalidEmail": "Email is Not Valid",
       "emptyPassword": "Enter Your Password",
-      "emptyRepeatPassword": "Repeat Your Password"
+      "invalidPassword": "Password is Not Valid",
+      "emptyRepeatPassword": "Repeat Your Password",
+      "invalidRepeatPassword": "Repeat Password is Not Valid",
+      "passwordMinLength": "Passwords Should Be at least 8 Characters Long",
+      "requiredConfirmPassword": "Repeat Password is required",
+      "passwordsNotMatch": "Repeat Password is Not Valid"
     }
   }
 }

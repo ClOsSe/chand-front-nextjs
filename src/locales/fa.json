@@ -37,12 +37,12 @@
     "loginDescription": "برای ورود به اکانت خود، ایمیل تان را در زیر وارد کنید",
     "signUp": "ثبت نام",
     "email": "ایمیل",
-    "password": "رمز عبور",
-    "forgetPassword": "رمز عبور خود را فراموش کردید؟",
+    "password": "رمزعبور",
+    "forgetPassword": "رمزعبور خود را فراموش کردید؟",
     "login": "ورود",
     "loginWithGoogle": "ورود از طریق گوگل",
-    "recoverYourPasswordTitle": "بازیابی رمز عبور",
-    "recoverYourPasswordDescription": "برای بازیابی رمز عبور، ایمیل خود را در زیر وارد کنید",
+    "recoverYourPasswordTitle": "بازیابی رمزعبور",
+    "recoverYourPasswordDescription": "برای بازیابی رمزعبور، ایمیل خود را در زیر وارد کنید",
     "exampleEmail": "example@gmail.com",
     "send": "ارسال",
     "createAccountTitle": "ساخت اکانت",
@@ -50,8 +50,15 @@
     "repeatPassword": "تکرار رمزعبور",
     "errors": {
       "emptyEmail": "ایمیل را وارد کنید",
+      "requiredEmail": "ایمیل الزامی است",
+      "invalidEmail": "ایمیل معتبر نیست",
       "emptyPassword": "رمزعبور را وارد کنید",
-      "emptyRepeatPassword": "رمزعبور خود را تکرار کنید"
+      "invalidPassword": "رمزعبور معتبر نیست",
+      "emptyRepeatPassword": "رمزعبور خود را تکرار کنید",
+      "invalidRepeatPassword": "تکرار رمزعبور معتبر نیست",
+      "passwordMinLength": "رمزعبور باید حداقل هشت کارکتر باشد",
+      "requiredConfirmPassword": "تکرار رمزعبور الزامی است",
+      "passwordsNotMatch": "تکرار رمزعبور صحیح نیست"
     }
   }
 }

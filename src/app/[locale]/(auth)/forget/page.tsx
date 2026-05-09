@@ -2,30 +2,45 @@
 import { Button } from "@/components/ui";
 import Input from "@/components/ui/input";
 import { Link } from "@/i18n/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import z from "zod";
 
+export const createForgetPasswordSchema = (t: (key: string) => string) => {
+  return z.object({
+    email: z
+      .string()
+      .min(1, t("errors.requiredEmail"))
+      .email(t("errors.invalidEmail")),
+  });
+};
+type ForgetPasswordFormValues = z.infer<
+  ReturnType<typeof createForgetPasswordSchema>
+>;
 export default function ForgetPage() {
-  const [email, setEmail] = useState("");
-  const [emailError, setEmailError] = useState("");
-
   const t = useTranslations("auth");
+  const forgetPasswordSchema = createForgetPasswordSchema(t);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-
-    setEmailError("");
-
-    if (!email.trim()) {
-      setEmailError(t("errors.emptyEmail"));
-      return;
-    }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<ForgetPasswordFormValues>({
+    resolver: zodResolver(forgetPasswordSchema),
+    defaultValues: {
+      email: "",
+    },
+  });
+  function onSubmit(values: ForgetPasswordFormValues) {
+    console.log(values);
+    // call service
   }
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className="flex mx-auto w-96 bg-(--cardBackground) text-(--cardForeground) border-nonw shadow-2xl/30 p-4 rounded-2xl justify-center"
     >
       <div className="grid grid-flow-row auto-rows-max w-100 content-between ">
@@ -50,14 +65,15 @@ export default function ForgetPage() {
               placeholder={t("email")}
               id="1"
               type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              error={emailError}
+              {...register("email")}
+              error={errors.email?.message}
             />
           </div>
         </div>
         <div className="grid grid-flow-row">
           <Button variant="primary" className="mt-5 py-5" type="submit">
-            {t("send")}
+            {}
+            {isSubmitting ? t("sending") : t("send")}
           </Button>
         </div>
       </div>

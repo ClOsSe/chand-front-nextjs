@@ -2,44 +2,58 @@
 import { Button } from "@/components/ui";
 import Input from "@/components/ui/input";
 import { Link } from "@/i18n/navigation";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 
-import { useState } from "react";
+import { useForm } from "react-hook-form";
+import z from "zod";
+
+export const createRegisterFormSchema = (t: (key: string) => string) => {
+  return z
+    .object({
+      email: z
+        .string()
+        .min(1, t("errors.requiredEmail"))
+        .email(t("errors.invalidEmail")),
+
+      password: z.string().min(1, t("errors.passwordMinLength")),
+      confirmPassword: z.string().min(1, t("errors.requiredConfirmPassword")),
+    })
+    .refine((data) => data.password === data.confirmPassword, {
+      message: t("error.passwordsNotMatch"),
+      path: ["confirmPassword"],
+    });
+};
+
+type RegisterAccountValues = z.infer<
+  ReturnType<typeof createRegisterFormSchema>
+>;
 
 export default function RegisterPage() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeadPassword, setRepeadPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const [repeadPasswordError, setRepeadPasswordError] = useState("");
-
   const t = useTranslations("auth");
+  const registerAccountSchema = createRegisterFormSchema(t);
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault();
-    setEmailError("");
-    setPasswordError("");
-    setRepeadPasswordError(""); // todo : translate
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+  } = useForm<RegisterAccountValues>({
+    resolver: zodResolver(registerAccountSchema),
+    defaultValues: {
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
 
-    setEmailError("");
-    if (!email.trim()) {
-      setEmailError(t("errors.emptyEmail"));
-      return;
-    }
-    if (!password.trim()) {
-      setPasswordError(t("errors.emptyPassword"));
-      return;
-    }
-    if (!repeadPassword.trim()) {
-      setRepeadPasswordError(t("errors.emptyRepeatPassword"));
-      return;
-    }
+  function onSubmit(values: RegisterAccountValues) {
+    console.log(values);
+    // todo: call api
   }
 
   return (
     <form
-      onSubmit={handleSubmit}
+      onSubmit={handleSubmit(onSubmit)}
       className="flex mx-auto w-96 bg-(--cardBackground) text-(--cardForeground) border-nonw shadow-2xl/30 p-4 rounded-2xl justify-center"
     >
       <div className="grid grid-flow-row auto-rows-max w-100 content-between ">
@@ -64,8 +78,8 @@ export default function RegisterPage() {
               placeholder={t("exampleEmail")}
               id="1"
               type="email"
-              onChange={(e) => setEmail(e.target.value)}
-              error={emailError}
+              {...register("email")}
+              error={errors.email?.message}
             />
           </div>
           <div className="mt-2">
@@ -75,8 +89,8 @@ export default function RegisterPage() {
               placeholder={t("password")}
               id="2"
               type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              error={passwordError}
+              {...register("password")}
+              error={errors.password?.message}
             />
           </div>
           <div className="mt-2">
@@ -86,8 +100,8 @@ export default function RegisterPage() {
               placeholder={t("repeatPassword")}
               id="2"
               type="password"
-              onChange={(e) => setRepeadPassword(e.target.value)}
-              error={repeadPasswordError}
+              {...register("password")}
+              error={errors.confirmPassword?.message}
             />
           </div>
         </div>
