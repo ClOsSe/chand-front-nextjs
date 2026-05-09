@@ -31,5 +31,27 @@
     "theme": "تم",
     "light": "تم روشن",
     "dark": "تم تیره"
+  },
+  "auth": {
+    "loginTitle": "ورود به اکانت",
+    "loginDescription": "برای ورود به اکانت خود، ایمیل تان را در زیر وارد کنید",
+    "signUp": "ثبت نام",
+    "email": "ایمیل",
+    "password": "رمز عبور",
+    "forgetPassword": "رمز عبور خود را فراموش کردید؟",
+    "login": "ورود",
+    "loginWithGoogle": "ورود از طریق گوگل",
+    "recoverYourPasswordTitle": "بازیابی رمز عبور",
+    "recoverYourPasswordDescription": "برای بازیابی رمز عبور، ایمیل خود را در زیر وارد کنید",
+    "exampleEmail": "example@gmail.com",
+    "send": "ارسال",
+    "createAccountTitle": "ساخت اکانت",
+    "createAccountDescription": "ایمیل خود را وارد کنید و یک رمزعبور قوی انتخاب کنید",
+    "repeatPassword": "تکرار رمزعبور",
+    "errors": {
+      "emptyEmail": "ایمیل را وارد کنید",
+      "emptyPassword": "رمزعبور را وارد کنید",
+      "emptyRepeatPassword": "رمزعبور خود را تکرار کنید"
+    }
   }
 }

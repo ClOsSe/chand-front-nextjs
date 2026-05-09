@@ -31,5 +31,27 @@
     "theme": "Theme",
     "light": "Light Mode",
     "dark": "Dark Mode"
+  },
+  "auth": {
+    "loginTitle": "Login to Your Account",
+    "loginDescription": "Enter your email below to login to your account",
+    "signUp": "Sign Up",
+    "email": "Email",
+    "password": "Password",
+    "forgetPassword": "Forget Your Password?",
+    "login": "Login",
+    "loginWithGoogle": "Login With Google",
+    "recoverYourPasswordTitle": "Recover Your Password",
+    "recoverYourPasswordDescription": "Enter your email below to send recovery email",
+    "exampleEmail": "example@gmail.com",
+    "send": "Send",
+    "createAccountTitle": "Create Account",
+    "createAccountDescription": "Enter your email below and choose an strong password",
+    "repeatPassword": "Repeat Password",
+    "errors": {
+      "emptyEmail": "Enter Your Email",
+      "emptyPassword": "Enter Your Password",
+      "emptyRepeatPassword": "Repeat Your Password"
+    }
   }
 }

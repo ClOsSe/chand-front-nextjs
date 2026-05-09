@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui";
 import Input from "@/components/ui/input";
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 
 import { useState } from "react";
 
@@ -10,6 +11,7 @@ export default function LoginPage() {
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const t = useTranslations("auth");
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -18,11 +20,12 @@ export default function LoginPage() {
     setPassword("");
 
     if (!email.trim()) {
-      setEmailError("Email is empty"); // todo : translate
+      setEmailError(t("errors.emptyEmail"));
+
       return;
     }
     if (!password.trim()) {
-      setPasswordError("Password is empty"); // todo : translate
+      setPasswordError(t("errors.emptyPassword"));
       return;
     }
   }
@@ -36,22 +39,22 @@ export default function LoginPage() {
         <div>
           <div className="grid grid-cols-5 gap-1 ">
             <div className="col-span-4 ">
-              <strong className="">Login to your account</strong>
+              <strong className="">{t("loginTitle")}</strong>
               <p className="text-pretty mt-1 tracking-tight">
-                Enter your email below to login to your account
+                {t("loginDescription")}
               </p>
             </div>
             <Link href="/register">
               <h3 className="hover:border-b hover:border-amber-50 text-center">
-                Sign Up
+                {t("signUp")}
               </h3>
             </Link>
           </div>
           <div className="mt-5">
             <Input
-              label="Email"
+              label={t("loginTitle")}
               className="mt-1"
-              placeholder="example@email.com"
+              placeholder={t("exampleEmail")}
               id="1"
               type="email"
               onChange={(e) => setEmail(e.target.value)}
@@ -60,9 +63,9 @@ export default function LoginPage() {
           </div>
           <div className="mt-2">
             <Input
-              label="Password"
+              label={t("password")}
               className="mt-1"
-              placeholder="password"
+              placeholder={t("password")}
               id="2"
               type="password"
               onChange={(e) => setPassword(e.target.value)}
@@ -74,10 +77,10 @@ export default function LoginPage() {
         </div>
         <div className="grid grid-flow-row">
           <Button variant="primary" className="mt-5 py-5" type="submit">
-            Login
+            {t("login")}
           </Button>
           <Button variant="secondary" className="mt-2 py-4" disabled>
-            Login With Google
+            {t("loginWithGoogle")}
           </Button>
         </div>
       </div>

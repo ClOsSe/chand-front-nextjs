@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import { InputHTMLAttributes } from "react";
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
@@ -21,6 +22,7 @@ export default function Input({
   forgetPasswordURL = "",
   ...props
 }: Props) {
+  const t = useTranslations("auth");
   return (
     <div className="w-full">
       {label && (
@@ -34,7 +36,7 @@ export default function Input({
               href={forgetPasswordURL}
               className="font-medium tracking-tight"
             >
-              Forget Your Password?
+              {t("forgetPassword")}
             </Link>
           )}
         </label>
