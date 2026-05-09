@@ -6,7 +6,7 @@ import { forgotPasswordMutationOptions } from "@/services/auth/auth.queries";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/router";
+import { useRouter } from "@/i18n/navigation";
 
 import { useForm } from "react-hook-form";
 import z from "zod";

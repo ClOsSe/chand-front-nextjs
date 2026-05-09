@@ -1,13 +1,13 @@
 {
   "/_not-found/page": "/_not-found",
   "/api/auth/forget-password/route": "/api/auth/forget-password",
-  "/api/auth/register/route": "/api/auth/register",
   "/api/auth/login/route": "/api/auth/login",
-  "/page": "/",
   "/api/auth/logout/route": "/api/auth/logout",
+  "/api/auth/register/route": "/api/auth/register",
   "/api/prices/latest/route": "/api/prices/latest",
+  "/page": "/",
   "/[locale]/(auth)/register/page": "/[locale]/register",
-  "/[locale]/(auth)/login/page": "/[locale]/login",
   "/[locale]/(main)/page": "/[locale]",
+  "/[locale]/(auth)/login/page": "/[locale]/login",
   "/[locale]/(auth)/forget/page": "/[locale]/forget"
 }

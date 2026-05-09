@@ -3251,12 +3251,12 @@
       "imports": [],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/api/prices/latest/route_client-reference-manifest.js": {
+    ".open-next/server-functions/default/.next/server/app/api/auth/register/route_client-reference-manifest.js": {
       "bytes": 11880,
       "imports": [],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/app/api/auth/register/route_client-reference-manifest.js": {
+    ".open-next/server-functions/default/.next/server/app/api/prices/latest/route_client-reference-manifest.js": {
       "bytes": 11880,
       "imports": [],
       "format": "cjs"
@@ -3272,7 +3272,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/node_modules/next/dist/server/load-manifest.external.js": {
-      "bytes": 76977,
+      "bytes": 76797,
       "imports": [
         {
           "path": "path",
@@ -3300,14 +3300,14 @@
           "original": "F:\\Projects\\Chand\\NEXTJS\\chand-front-nextjs\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\auth\\forget-password\\route_client-reference-manifest.js"
         },
         {
-          "path": ".open-next/server-functions/default/.next/server/app/api/prices/latest/route_client-reference-manifest.js",
-          "kind": "require-call",
-          "original": "F:\\Projects\\Chand\\NEXTJS\\chand-front-nextjs\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\prices\\latest\\route_client-reference-manifest.js"
-        },
-        {
           "path": ".open-next/server-functions/default/.next/server/app/api/auth/register/route_client-reference-manifest.js",
           "kind": "require-call",
           "original": "F:\\Projects\\Chand\\NEXTJS\\chand-front-nextjs\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\auth\\register\\route_client-reference-manifest.js"
+        },
+        {
+          "path": ".open-next/server-functions/default/.next/server/app/api/prices/latest/route_client-reference-manifest.js",
+          "kind": "require-call",
+          "original": "F:\\Projects\\Chand\\NEXTJS\\chand-front-nextjs\\.open-next\\server-functions\\default\\.next\\server\\app\\api\\prices\\latest\\route_client-reference-manifest.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/app/api/auth/logout/route_client-reference-manifest.js",
@@ -3827,11 +3827,6 @@
       "imports": [],
       "format": "cjs"
     },
-    ".open-next/server-functions/default/.next/server/chunks/57.js": {
-      "bytes": 77118,
-      "imports": [],
-      "format": "cjs"
-    },
     ".open-next/server-functions/default/.next/server/chunks/611.js": {
       "bytes": 69183,
       "imports": [
@@ -3874,7 +3869,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/webpack-runtime.js": {
-      "bytes": 2099,
+      "bytes": 2046,
       "imports": [
         {
           "path": ".open-next/server-functions/default/.next/server/chunks/331.js",
@@ -3885,11 +3880,6 @@
           "path": ".open-next/server-functions/default/.next/server/chunks/334.js",
           "kind": "require-call",
           "original": "./chunks/334.js"
-        },
-        {
-          "path": ".open-next/server-functions/default/.next/server/chunks/57.js",
-          "kind": "require-call",
-          "original": "./chunks/57.js"
         },
         {
           "path": ".open-next/server-functions/default/.next/server/chunks/611.js",
@@ -4107,7 +4097,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/[locale]/(auth)/forget/page.js": {
-      "bytes": 26065,
+      "bytes": 26044,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -4233,7 +4223,7 @@
       "format": "cjs"
     },
     ".open-next/server-functions/default/.next/server/app/[locale]/(auth)/login/page.js": {
-      "bytes": 26459,
+      "bytes": 26438,
       "imports": [
         {
           "path": ".open-next/server-functions/default/node_modules/next/dist/shared/lib/router/utils/app-paths.js",
@@ -7565,10 +7555,10 @@
         ".open-next/server-functions/default/.next/server/app/api/auth/forget-password/route_client-reference-manifest.js": {
           "bytesInOutput": 10752
         },
-        ".open-next/server-functions/default/.next/server/app/api/prices/latest/route_client-reference-manifest.js": {
+        ".open-next/server-functions/default/.next/server/app/api/auth/register/route_client-reference-manifest.js": {
           "bytesInOutput": 10732
         },
-        ".open-next/server-functions/default/.next/server/app/api/auth/register/route_client-reference-manifest.js": {
+        ".open-next/server-functions/default/.next/server/app/api/prices/latest/route_client-reference-manifest.js": {
           "bytesInOutput": 10732
         },
         ".open-next/server-functions/default/.next/server/app/api/auth/logout/route_client-reference-manifest.js": {
@@ -7578,7 +7568,7 @@
           "bytesInOutput": 10723
         },
         ".open-next/server-functions/default/node_modules/next/dist/server/load-manifest.external.js": {
-          "bytesInOutput": 65150
+          "bytesInOutput": 64984
         },
         ".open-next/server-functions/default/node_modules/next/dist/server/app-render/action-async-storage-instance.js": {
           "bytesInOutput": 501
@@ -7649,9 +7639,6 @@
         ".open-next/server-functions/default/.next/server/chunks/334.js": {
           "bytesInOutput": 383473
         },
-        ".open-next/server-functions/default/.next/server/chunks/57.js": {
-          "bytesInOutput": 80236
-        },
         ".open-next/server-functions/default/.next/server/chunks/611.js": {
           "bytesInOutput": 71912
         },
@@ -7671,10 +7658,10 @@
           "bytesInOutput": 4742
         },
         ".open-next/server-functions/default/.next/server/chunks/970.js": {
-          "bytesInOutput": 1934
+          "bytesInOutput": 1933
         },
         ".open-next/server-functions/default/.next/server/webpack-runtime.js": {
-          "bytesInOutput": 2019
+          "bytesInOutput": 1987
         },
         ".open-next/server-functions/default/.next/server/app/api/auth/forget-password/route.js": {
           "bytesInOutput": 7053
@@ -7683,10 +7670,10 @@
           "bytesInOutput": 27389
         },
         ".open-next/server-functions/default/.next/server/app/[locale]/(auth)/forget/page.js": {
-          "bytesInOutput": 26577
+          "bytesInOutput": 26555
         },
         ".open-next/server-functions/default/.next/server/app/[locale]/(auth)/login/page.js": {
-          "bytesInOutput": 26974
+          "bytesInOutput": 26952
         },
         ".open-next/server-functions/default/.next/server/app/api/auth/register/route.js": {
           "bytesInOutput": 7083
@@ -7869,7 +7856,7 @@
           "bytesInOutput": 57956
         }
       },
-      "bytes": 4090142
+      "bytes": 4009663
     }
   }
 }

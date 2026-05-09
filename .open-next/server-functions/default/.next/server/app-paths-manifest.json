@@ -1,13 +1,13 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
   "/api/auth/forget-password/route": "app/api/auth/forget-password/route.js",
-  "/api/auth/register/route": "app/api/auth/register/route.js",
   "/api/auth/login/route": "app/api/auth/login/route.js",
-  "/page": "app/page.js",
   "/api/auth/logout/route": "app/api/auth/logout/route.js",
+  "/api/auth/register/route": "app/api/auth/register/route.js",
   "/api/prices/latest/route": "app/api/prices/latest/route.js",
+  "/page": "app/page.js",
   "/[locale]/(auth)/register/page": "app/[locale]/(auth)/register/page.js",
-  "/[locale]/(auth)/login/page": "app/[locale]/(auth)/login/page.js",
   "/[locale]/(main)/page": "app/[locale]/(main)/page.js",
+  "/[locale]/(auth)/login/page": "app/[locale]/(auth)/login/page.js",
   "/[locale]/(auth)/forget/page": "app/[locale]/(auth)/forget/page.js"
 }
