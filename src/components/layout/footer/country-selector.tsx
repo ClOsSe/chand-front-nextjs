@@ -29,7 +29,7 @@ export function CountrySelector() {
         <div
           dir={isRtl ? "ltr" : "rtl"}
           className={[
-            "absolute bottom-12 max-h-96 w-52 sm:w-72 overflow-y-auto rounded-xl bg-(--menu-bg) py-2 text-(--menu-fg) shadow-xl ring-1 ring-(--menu-border)",
+            "absolute bottom-12 max-h-[calc(100vh-6rem)]  w-52 sm:w-72 overflow-y-auto rounded-xl bg-(--menu-bg) py-2 text-(--menu-fg) shadow-xl ring-1 ring-(--menu-border)",
             isRtl ? "left-0" : "right-0",
           ].join(" ")}
         >
