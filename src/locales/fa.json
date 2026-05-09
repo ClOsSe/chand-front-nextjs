@@ -1,6 +1,7 @@
 {
   "common": {
-    "title": "Now Chand?!"
+    "title": "Now Chand?!",
+    "status": "آخرین بروزرسانی"
   },
   "theme": {
     "light": "تم روشن",
@@ -30,7 +31,8 @@
     "georgian": "میلادی",
     "theme": "تم",
     "light": "تم روشن",
-    "dark": "تم تیره"
+    "dark": "تم تیره",
+    "logout": "خروج"
   },
   "auth": {
     "loginTitle": "ورود به اکانت",

@@ -10,6 +10,7 @@ export type MenuActionContext = {
   changeLocale: (locale: "fa" | "en") => void;
   setThemeMode: (theme: Theme) => void;
   setCalendarType: (type: CalendarType) => void;
+  logoutUser: () => void;
 };
 
 export type MenuItem = {
@@ -19,4 +20,5 @@ export type MenuItem = {
   children?: MenuItem[];
   onClick?: (ctx: MenuActionContext) => void;
   isActive?: (ctx: MenuActionContext) => boolean;
+  logout?: () => void;
 };

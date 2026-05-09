@@ -1,6 +1,7 @@
 {
   "common": {
-    "title": "Now Chand?!"
+    "title": "Now Chand?!",
+    "status": "Last Update"
   },
   "theme": {
     "light": "Light Mode",
@@ -30,7 +31,8 @@
     "georgian": "Georgian",
     "theme": "Theme",
     "light": "Light Mode",
-    "dark": "Dark Mode"
+    "dark": "Dark Mode",
+    "logout": "Logout"
   },
   "auth": {
     "loginTitle": "Login to Your Account",

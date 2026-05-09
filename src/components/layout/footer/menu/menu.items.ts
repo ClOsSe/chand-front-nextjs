@@ -18,8 +18,10 @@ import {
   CameraIcon,
   Aperture,
   ExternalLink,
+  LogOut,
 } from "lucide-react";
 import type { MenuItem } from "./menu.types";
+import { logoutUser } from "@/services/auth/auth.service";
 
 export const menuItems: MenuItem[] = [
   {
@@ -99,6 +101,11 @@ export const menuItems: MenuItem[] = [
         isActive: ({ calendarType }) => calendarType === "gregorian", 
       },
     ],
+  },
+  {
+    label: "logout",
+    icon: LogOut,
+    logout: () => logoutUser(),
   },
   {
     label: "socialMedia",
