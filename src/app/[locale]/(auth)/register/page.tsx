@@ -18,7 +18,7 @@ export default function RegisterPage() {
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setEmailError(t(""));
+    setEmailError("");
     setPasswordError("");
     setRepeadPasswordError(""); // todo : translate
 
