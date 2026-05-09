@@ -3,7 +3,10 @@
     "title": "Now Chand?!",
     "status": "آخرین بروزرسانی",
     "loading": "درحال بروزرسانی",
-    "loadingFailed": "خطا در بروزرسانی"
+    "loadingFailed": "خطا در بروزرسانی",
+    "priceNotAvailable": "لیست قیمت ها در دسترس نیست",
+    "loadingPrices": "در حال دریافت قیمت ها...",
+    "priceServiceFailed": "سرویس دریافت قیمت با خطا مواجه شد"
   },
   "theme": {
     "light": "تم روشن",

@@ -33,7 +33,7 @@ export default async function HomePage({ params }: Props) {
   }
 
   return (
-    <main className="mx-auto flex w-3/4 flex-col gap-4 bg-(--background) py-6 text-(--foreground)">
+    <main className="mx-auto flex w-fit sm:w-3/4 flex-col gap-4 bg-(--background) py-6 text-(--foreground)">
       <HydrationBoundary state={dehydrate(queryClient)}>
         <TokenList initialError={priceError} locale={locale} />
       </HydrationBoundary>

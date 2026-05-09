@@ -7,6 +7,7 @@ import { getTokenKey } from "@/lib/price/token-key";
 import { tokensQueryOptions } from "@/services/price.queries";
 import type { PriceList } from "@/types/price";
 import { useAppSelector } from "@/store/hooks";
+import { useTranslations } from "next-intl";
 
 type Props = {
   initialError: string | null;
@@ -14,6 +15,8 @@ type Props = {
 };
 
 export function TokenList({ initialError, locale }: Props) {
+  const t = useTranslations("common");
+
   const { data: tokens, error, isPending } = useQuery(tokensQueryOptions);
   const priceError = getErrorMessage(error) ?? (!tokens ? initialError : null);
   const selectedTokenKeys = useAppSelector(
@@ -35,7 +38,7 @@ export function TokenList({ initialError, locale }: Props) {
         role="alert"
         className="rounded-lg border border-red-500/40 bg-red-500/10 p-4 text-red-600 dark:text-red-300"
       >
-        <h2 className="font-semibold">Price service failed</h2>
+        <h2 className="font-semibold">{t("priceServiceFailed")}</h2>
         <p className="mt-1 text-sm">{priceError}</p>
       </section>
     );
@@ -44,7 +47,7 @@ export function TokenList({ initialError, locale }: Props) {
   if (isPending) {
     return (
       <section className="rounded-lg border border-(--border) p-4">
-        Loading prices...
+        {t("loadingPrices")}
       </section>
     );
   }
@@ -52,7 +55,7 @@ export function TokenList({ initialError, locale }: Props) {
   if (!tokenList.length) {
     return (
       <section className="rounded-lg border border-(--border) p-4">
-        No prices are available.
+        {t("priceNotAvailable")}
       </section>
     );
   }
@@ -62,38 +65,36 @@ export function TokenList({ initialError, locale }: Props) {
       {tokenList.map((token) => {
         const priceSummary = summarizePrices(token.ps, numberFormatter);
         const tokenIcon = getTokenIcon(token);
-        // console.log("token", token);
-
         return (
           <article
             key={`${token.ty}-${token.ab}`}
-            className="rounded-2xl border border-(--border) p-4 h-48 shadow-2xl/15"
+            className="rounded-2xl border border-(--border) p-4  h-35 sm:h-48 shadow-2xl/15"
           >
-            <div className="flex justify-between gap-4 h-full ">
+            <div className="flex justify-between gap-0 h-full ">
               <div className="grid content-between gap-4">
                 <div
                   role="img"
                   aria-label={tokenIcon.label}
                   title={tokenIcon.label}
-                  className="block h-10 w-10 rounded-full bg-white bg-cover bg-center bg-no-repeat ring-1 ring-(--border)"
+                  className="block w-8 sm:w-10 aspect-square rounded-full bg-white bg-cover bg-center bg-no-repeat ring-1 ring-(--border)"
                   style={{ backgroundImage: `url("${tokenIcon.src}")` }}
                 />
                 {priceSummary && (
                   <div className="text-end">
-                    <p className="font-medium text-xl text-red-500 text-left">
+                    <p className="font-medium text-md sm:text-2xl text-red-500 text-left">
                       {priceSummary.changeWithSeparate}
                     </p>
-                    <p className="font-bold text-2xl text-(--foreground)">
+                    <p className="font-bold text-lg sm:text-2xl text-(--foreground)">
                       {numberFormatter.format(priceSummary.last)}
                     </p>
                   </div>
                 )}
               </div>
               <div>
-                <h2 className="font-medium text-end">
+                <h2 className="text-xs sm:text-base font-thin text-end">
                   {locale === "fa" ? token.fa : token.en}
                 </h2>
-                <p className="text-sm text-(--tab-inactive-fg)">
+                <p className="text-xs sm:text-sm text-end text-(--tab-inactive-fg)">
                   {token.ab} - {token.ty}
                 </p>
               </div>

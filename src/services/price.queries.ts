@@ -9,5 +9,6 @@ export const priceQueryKeys = {
 export const tokensQueryOptions = queryOptions({
   queryKey: priceQueryKeys.tokens(),
   queryFn: getTokens,
-  staleTime: 60000,
+  staleTime: 600000,
+  refetchOnMount: "always",
 });

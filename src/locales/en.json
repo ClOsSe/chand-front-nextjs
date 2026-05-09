@@ -3,7 +3,10 @@
     "title": "Now Chand?!",
     "status": "Last Update",
     "loading": "Loading...",
-    "loadingFailed": "Loading Failed"
+    "loadingFailed": "Loading Failed",
+    "priceNotAvailable": "No prices are available.",
+    "loadingPrices": "Loading prices...",
+    "priceServiceFailed": "Price service failed"
   },
   "theme": {
     "light": "Light Mode",
