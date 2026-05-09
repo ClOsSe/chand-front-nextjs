@@ -53,7 +53,7 @@ export async function forgotPassword(
 }
 
 export async function logoutUser(): Promise<{ message: string }> {
-  const { data } = await api.post<{ message: string }>("api/auth/logout");
+  const { data } = await api.post<{ message: string }>("/api/auth/logout");
 
   return data;
 }
