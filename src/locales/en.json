@@ -1,7 +1,9 @@
 {
   "common": {
     "title": "Now Chand?!",
-    "status": "Last Update"
+    "status": "Last Update",
+    "loading": "Loading...",
+    "loadingFailed": "Loading Failed"
   },
   "theme": {
     "light": "Light Mode",

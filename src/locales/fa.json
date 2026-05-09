@@ -1,7 +1,9 @@
 {
   "common": {
     "title": "Now Chand?!",
-    "status": "آخرین بروزرسانی"
+    "status": "آخرین بروزرسانی",
+    "loading": "درحال بروزرسانی",
+    "loadingFailed": "خطا در بروزرسانی"
   },
   "theme": {
     "light": "تم روشن",

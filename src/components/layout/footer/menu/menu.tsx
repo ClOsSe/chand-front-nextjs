@@ -129,6 +129,7 @@ export function Menu() {
         size="sm"
         type="button"
         variant="ghost"
+        name="load menu"
         onClick={() => {
           setOpen((prev) => !prev);
           setActiveSubmenu(null);

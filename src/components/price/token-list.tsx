@@ -71,7 +71,8 @@ export function TokenList({ initialError, locale }: Props) {
           >
             <div className="flex justify-between gap-4 h-full ">
               <div className="grid content-between gap-4">
-                <span
+                <div
+                  role="img"
                   aria-label={tokenIcon.label}
                   title={tokenIcon.label}
                   className="block h-10 w-10 rounded-full bg-white bg-cover bg-center bg-no-repeat ring-1 ring-(--border)"
