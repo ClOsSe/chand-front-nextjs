@@ -27,9 +27,9 @@ export function CountrySelector() {
     <div className="relative">
       {open && (
         <div
-          dir={isRtl ? "rtl" : "ltr"}
+          dir={isRtl ? "ltr" : "rtl"}
           className={[
-            "absolute bottom-12 max-h-96 w-72 overflow-y-auto rounded-xl bg-(--menu-bg) py-2 text-(--menu-fg) shadow-xl ring-1 ring-(--menu-border)",
+            "absolute bottom-12 max-h-96 w-52 sm:w-72 overflow-y-auto rounded-xl bg-(--menu-bg) py-2 text-(--menu-fg) shadow-xl ring-1 ring-(--menu-border)",
             isRtl ? "left-0" : "right-0",
           ].join(" ")}
         >
@@ -54,7 +54,7 @@ export function CountrySelector() {
                 <button
                   key={tokenKey}
                   type="button"
-                  className="flex w-full items-center justify-between gap-3 border-b border-(--menu-border) px-4 py-3 text-sm transition hover:bg-(--tab-active-bg)"
+                  className="flex w-full items-center justify-between gap-3 border-b border-(--menu-border) px-4 py-3 text-xs sm:text-sm transition hover:bg-(--tab-active-bg)"
                   onClick={() => dispatch(toggleSelectedToken(tokenKey))}
                 >
                   <span className="flex min-w-0 items-center gap-3 text-start">
