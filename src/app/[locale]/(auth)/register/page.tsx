@@ -100,7 +100,7 @@ export default function RegisterPage() {
               placeholder={t("repeatPassword")}
               id="2"
               type="password"
-              {...register("password")}
+              {...register("confirmPassword")}
               error={errors.confirmPassword?.message}
             />
           </div>

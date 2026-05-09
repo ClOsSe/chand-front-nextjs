@@ -39,6 +39,14 @@ export default function LoginPage() {
   function onSubmit(values: LoginFormValues) {
     console.log(values);
     // submit api
+
+    // response.cookies.set("token", token, {
+    //   httpOnly: true,
+    //   secure: process.env.NODE_ENV === "production",
+    //   sameSite: "lax",
+    //   path: "/",
+    //   maxAge: 60 * 60 * 24 * 7,
+    // });
   }
 
   return (
