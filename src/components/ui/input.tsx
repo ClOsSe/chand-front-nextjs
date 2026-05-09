@@ -50,7 +50,7 @@ export default function Input({
         ].join(" ")}
         {...props}
       />
-      {error && <p className="text-sm text-red-500">{error}test</p>}
+      {error && <p className="text-sm text-red-500">{error}</p>}
     </div>
   );
 }

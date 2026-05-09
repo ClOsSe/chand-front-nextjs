@@ -5,24 +5,17 @@ import { Link } from "@/i18n/navigation";
 
 import { useState } from "react";
 
-export default function LoginPage() {
+export default function ForgetPage() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
 
   function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
 
     setEmailError("");
-    setPassword("");
 
     if (!email.trim()) {
       setEmailError("Email is empty"); // todo : translate
-      return;
-    }
-    if (!password.trim()) {
-      setPasswordError("Password is empty"); // todo : translate
       return;
     }
   }
@@ -36,14 +29,14 @@ export default function LoginPage() {
         <div>
           <div className="grid grid-cols-5 gap-1 ">
             <div className="col-span-4 ">
-              <strong className="">Login to your account</strong>
+              <strong className="">Recover Your Password</strong>
               <p className="text-pretty mt-1 tracking-tight">
-                Enter your email below to login to your account
+                Enter your email below to send recovery email
               </p>
             </div>
-            <Link href="/register">
+            <Link href="/login">
               <h3 className="hover:border-b hover:border-amber-50 text-center">
-                Sign Up
+                Login
               </h3>
             </Link>
           </div>
@@ -58,26 +51,10 @@ export default function LoginPage() {
               error={emailError}
             />
           </div>
-          <div className="mt-2">
-            <Input
-              label="Password"
-              className="mt-1"
-              placeholder="password"
-              id="2"
-              type="password"
-              onChange={(e) => setPassword(e.target.value)}
-              error={passwordError}
-              showForgetPassword
-              forgetPasswordURL="/forget"
-            />
-          </div>
         </div>
         <div className="grid grid-flow-row">
           <Button variant="primary" className="mt-5 py-5" type="submit">
-            Login
-          </Button>
-          <Button variant="secondary" className="mt-2 py-4" disabled>
-            Login With Google
+            Send
           </Button>
         </div>
       </div>
