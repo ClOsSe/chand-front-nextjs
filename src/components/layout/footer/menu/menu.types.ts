@@ -20,5 +20,4 @@ export type MenuItem = {
   children?: MenuItem[];
   onClick?: (ctx: MenuActionContext) => void;
   isActive?: (ctx: MenuActionContext) => boolean;
-  logout?: () => void;
 };

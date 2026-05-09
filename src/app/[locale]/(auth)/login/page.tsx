@@ -99,8 +99,13 @@ export default function LoginPage() {
           </div>
         </div>
         <div className="grid grid-flow-row">
-          <Button variant="primary" className="mt-5 py-5" type="submit">
-            {isSubmitting ? t("sending") : t("login")}
+          <Button
+            variant="primary"
+            className="mt-5 py-5"
+            type="submit"
+            disabled={isSubmitting || loginMutation.isPending}
+          >
+            {loginMutation.isPending ? t("sending") : t("login")}
           </Button>
           <Button variant="secondary" className="mt-2 py-4" disabled>
             {t("loginWithGoogle")}

@@ -21,7 +21,6 @@ import {
   LogOut,
 } from "lucide-react";
 import type { MenuItem } from "./menu.types";
-import { logoutUser } from "@/services/auth/auth.service";
 
 export const menuItems: MenuItem[] = [
   {
@@ -103,11 +102,6 @@ export const menuItems: MenuItem[] = [
     ],
   },
   {
-    label: "logout",
-    icon: LogOut,
-    logout: () => logoutUser(),
-  },
-  {
     label: "socialMedia",
     icon: Send,
     children: [
@@ -115,6 +109,11 @@ export const menuItems: MenuItem[] = [
       { label: "instagram", icon: CameraIcon },
       { label: "youtube", icon: Aperture },
     ],
+  },
+  {
+    label: "logout",
+    icon: LogOut,
+    onClick: ({ logoutUser }) => logoutUser(),
   },
   {
     label: "website",

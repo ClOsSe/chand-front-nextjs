@@ -13,6 +13,8 @@ import { MenuRow } from "./menu-row";
 import { SubMenu } from "./submenu";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setCalendarType } from "@/store/slices/settings.slice";
+import { useMutation } from "@tanstack/react-query";
+import { logoutMutationOptions } from "@/services/auth/auth.queries";
 
 export function Menu() {
   const dispatch = useAppDispatch();
@@ -31,6 +33,17 @@ export function Menu() {
   const currentTheme: Theme = theme === "dark" ? "dark" : "light";
 
   const calendarType = useAppSelector((state) => state.settings.calendarType);
+
+  const logoutMutation = useMutation({
+    ...logoutMutationOptions,
+    onSuccess: () => {
+      router.push("/login");
+    },
+    onError: (error) => {
+      console.error("[login]", error);
+    },
+  });
+
   const handleCalendarTypeChange = (type: "jalali" | "gregorian") => {
     dispatch(setCalendarType(type));
   };
@@ -44,6 +57,7 @@ export function Menu() {
     setThemeMode: setTheme,
     calendarType,
     setCalendarType: handleCalendarTypeChange,
+    logoutUser: () => logoutMutation.mutate(),
   };
 
   return (
