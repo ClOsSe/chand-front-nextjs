@@ -66,8 +66,8 @@ export function Menu() {
         <div
           dir={isRtl ? "rtl" : "ltr"}
           className={[
-            "absolute bottom-12 w-60 overflow-visible rounded-xl bg-(--menu-bg) text-(--menu-fg) shadow-lg/20 shadow-slate-950",
-            isRtl ? "right-0" : "left-0",
+            "absolute bottom-12 w-50 sm:w-60 overflow-visible rounded-xl bg-(--menu-bg) text-(--menu-fg) shadow-lg/20 shadow-slate-950",
+            isRtl ? "-right-9" : "-left-9",
           ].join(" ")}
         >
           <div className="rounded-xl">

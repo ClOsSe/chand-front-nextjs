@@ -12,8 +12,8 @@ export function SubMenu({ items, t, ctx, isRtl }: Props) {
   return (
     <div
       className={[
-        "absolute top-0 w-52 overflow-hidden rounded-lg bg-(--submenu-bg) text-(--submenu-fg) shadow-xl",
-        isRtl ? "right-full mr-2" : "left-full ml-2",
+        "absolute top-0 w-48 overflow-hidden rounded-lg bg-(--submenu-bg) text-(--submenu-fg) shadow-xl",
+        isRtl ? "right-full mr-0.5" : "left-full ml-0.5",
       ].join(" ")}
     >
       {items.map((child) => {
@@ -26,7 +26,7 @@ export function SubMenu({ items, t, ctx, isRtl }: Props) {
             type="button"
             onClick={() => child.onClick?.(ctx)}
             className={[
-              "flex w-full items-center justify-between border-b border-(--menu-border) px-4 py-3 text-sm transition  hover:cursor-pointer ",
+              "flex w-full items-center justify-between border-b border-(--menu-border) px-4 py-3 text-xs sm:text-sm transition  hover:cursor-pointer ",
               isActive
                 ? "bg-(--submenu-active-bg) text-(--submenu-active-fg)"
                 : "text-(--tab-inactive-fg)",

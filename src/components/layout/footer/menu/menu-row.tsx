@@ -18,7 +18,7 @@ export function MenuRow({ item, t, isActive, ArrowIcon, onClick }: Props) {
       type="button"
       onClick={onClick}
       className={[
-        "flex w-full items-center justify-between border-b border-(--menu-border) px-4 py-3 text-sm transition hover:cursor-pointer",
+        "flex w-full items-center justify-between border-b border-(--menu-border) px-4 py-3 text-xs sm:text-sm transition hover:cursor-pointer ",
         isActive
           ? "bg-(--tab-active-bg) text-(--tab-active-fg)"
           : "bg-(--tab-inactive-bg) text-(--tab-inactive-fg)",
