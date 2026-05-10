@@ -1,6 +1,4 @@
 import { ReactNode } from "react";
-import { cookies } from "next/headers";
-import { redirect } from "next/navigation";
 
 import Header from "@/components/layout/header/header";
 import Footer from "@/components/layout/footer/footer";
@@ -13,16 +11,6 @@ type Props = {
 };
 
 export default async function MainLayout({ children, params }: Props) {
-  const { locale } = await params;
-
-  const cookieStore = await cookies();
-
-  const token = cookieStore.get("token")?.value;
-
-  // if (!token) {
-  //   redirect(`/${locale}/login`);
-  // }
-
   return (
     <div className="flex min-h-screen flex-col">
       <Header />

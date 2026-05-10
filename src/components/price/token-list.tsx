@@ -10,15 +10,14 @@ import { useAppSelector } from "@/store/hooks";
 import { useTranslations } from "next-intl";
 
 type Props = {
-  initialError: string | null;
   locale: Locale;
 };
 
-export function TokenList({ initialError, locale }: Props) {
+export function TokenList({ locale }: Props) {
   const t = useTranslations("common");
 
   const { data: tokens, error, isPending } = useQuery(tokensQueryOptions);
-  const priceError = getErrorMessage(error) ?? (!tokens ? initialError : null);
+  const priceError = getErrorMessage(error);
   const selectedTokenKeys = useAppSelector(
     (state) => state.settings.selectedTokenKeys,
   );
