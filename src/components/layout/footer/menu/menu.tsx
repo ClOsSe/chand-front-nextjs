@@ -152,7 +152,7 @@ export function Menu() {
             })}
 
             <div className="border-b border-(--menu-border) px-4 py-3 text-sm">
-              Version : 1.0.0
+              Version : {process.env.NEXT_PUBLIC_APP_VERSION}
             </div>
 
             <div className="px-4 py-3 text-center text-sm text-slate-400">
