@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Check, Plus } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useQuery } from "@tanstack/react-query";
@@ -14,6 +14,25 @@ import { tokensQueryOptions } from "@/services/price.queries";
 export function CountrySelector() {
   const t = useTranslations("common");
   const [open, setOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   const locale = useLocale();
   const dispatch = useAppDispatch();
   const selectedTokenKeys = useAppSelector(
@@ -24,12 +43,12 @@ export function CountrySelector() {
   const isRtl = locale === "fa";
 
   return (
-    <div className="relative">
+    <div ref={containerRef} className="relative">
       {open && (
         <div
           dir={isRtl ? "ltr" : "rtl"}
           className={[
-            "absolute bottom-12 max-h-[calc(100vh-6rem)]  w-52 sm:w-72 overflow-y-auto rounded-xl bg-(--menu-bg) py-2 text-(--menu-fg) shadow-xl ring-1 ring-(--menu-border)",
+            "absolute bottom-12 max-h-[calc(100vh-9rem)]  w-52 sm:w-72 overflow-y-auto rounded-xl bg-(--menu-bg) py-2 text-(--menu-fg) shadow-xl ring-1 ring-(--menu-border)",
             isRtl ? "left-0" : "right-0",
           ].join(" ")}
         >

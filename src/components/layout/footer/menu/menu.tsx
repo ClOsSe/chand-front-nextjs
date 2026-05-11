@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { MoreHorizontal, ChevronRight, ChevronLeft } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
@@ -34,6 +34,26 @@ export function Menu() {
 
   const [open, setOpen] = useState(false);
   const [activeSubmenu, setActiveSubmenu] = useState<string | null>(null);
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+        setActiveSubmenu(null);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const currentTheme: Theme = resolvedTheme === "dark" ? "dark" : "light";
 
@@ -78,7 +98,7 @@ export function Menu() {
   };
 
   return (
-    <div className="relative">
+    <div ref={containerRef} className="relative">
       {open && (
         <div
           dir={isRtl ? "rtl" : "ltr"}

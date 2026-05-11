@@ -8,6 +8,7 @@ import { tokensQueryOptions } from "@/services/price.queries";
 import type { PriceList } from "@/types/price";
 import { useAppSelector } from "@/store/hooks";
 import { useTranslations } from "next-intl";
+import { useEffect } from "react";
 
 type Props = {
   locale: Locale;
@@ -24,6 +25,13 @@ export function TokenList({ locale }: Props) {
   const viewModel = useAppSelector((state) => state.settings.viewModel);
 
   const priceColor = useAppSelector((state) => state.settings.priceColor);
+
+  useEffect(() => {
+    localStorage.setItem(
+      "selectedTokenKeys",
+      JSON.stringify(selectedTokenKeys),
+    );
+  }, [selectedTokenKeys]);
 
   const tokenList =
     selectedTokenKeys.length > 0
