@@ -20,6 +20,13 @@ jobs:
           node-version: 22
           cache: npm
 
+      - name: Debug files
+        run: |
+          pwd
+          ls -la
+          git status
+          find . -maxdepth 2 -name "package-lock.json"
+
       - name: Install dependencies
         run: npm ci
 
