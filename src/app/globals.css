@@ -42,7 +42,8 @@
 
   --btnForeground: oklch(96.8% 0.007 247.896);
 
-  --menu-bg: oklch(12.9% 0.042 264.695); /* slate-950 */
+  /* --menu-bg: oklch(12.9% 0.042 264.695); slate-950 */
+   --menu-bg: oklch(20.8% 0.042 265.755); /*slate-950 */
   --menu-fg: oklch(70.4% 0.04 256.788); /* slate-400 */
   --menu-border: oklch(27.9% 0.041 260.031); /* slate-800 */
   --submenu-bg: oklch(17.8% 0.037 265.754); /* slate-900 */
