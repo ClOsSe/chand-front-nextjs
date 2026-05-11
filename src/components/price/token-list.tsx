@@ -1,5 +1,5 @@
 "use client";
-
+import { MiniPriceChart } from "@/components/price/mini-price-chart";
 import { useQuery } from "@tanstack/react-query";
 import type { Locale } from "@/config/i18n";
 import { getTokenIcon } from "@/lib/price/token-icon";
@@ -42,6 +42,7 @@ export function TokenList({ locale }: Props) {
   const numberFormatter = new Intl.NumberFormat(
     locale === "fa" ? "fa-IR" : "en-US",
   );
+  const isRtl = locale === "fa";
 
   if (priceError) {
     return (
@@ -86,8 +87,8 @@ export function TokenList({ locale }: Props) {
             key={`${token.ty}-${token.ab}`}
             className="rounded-2xl border border-(--border) p-4  h-35 sm:h-48 shadow-2xl/15"
           >
-            <div className="flex justify-between gap-0 h-full ">
-              <div className="grid content-between gap-4">
+            <div className="flex gap-0 h-full ">
+              <div className="flex-nonw grid content-between gap-4 basis-1/4 ">
                 <div
                   role="img"
                   aria-label={tokenIcon.label}
@@ -99,21 +100,41 @@ export function TokenList({ locale }: Props) {
                   <div className="text-end">
                     <p
                       className={[
-                        "font-medium text-md sm:text-2xl  text-left",
+                        "font-medium text-md sm:text-2xl ",
                         priceColor === "red"
                           ? "text-red-500"
                           : "text-green-500",
+                        isRtl ? "text-right" : "text-left",
                       ].join(" ")}
                     >
                       {priceSummary.changeWithSeparate}
                     </p>
-                    <p className="font-bold text-lg sm:text-2xl text-(--foreground)">
+                    <p
+                      className={[
+                        "font-bold text-lg sm:text-2xl text-(--foreground)",
+                        isRtl ? "text-right" : "text-left",
+                      ].join(" ")}
+                    >
                       {numberFormatter.format(priceSummary.last)}
                     </p>
                   </div>
                 )}
               </div>
-              <div>
+
+              {viewModel === "listView" ? (
+                <div
+                  className={[
+                    "basis-4/9 flex items-end bottom-0 grow",
+                    priceColor === "red" ? "text-red-500" : "text-green-500",
+                  ].join(" ")}
+                >
+                  <MiniPriceChart prices={token.ps} />
+                </div>
+              ) : (
+                ""
+              )}
+
+              <div className="flex-nonw">
                 <h2 className="text-xs sm:text-base font-thin text-end">
                   {locale === "fa" ? token.fa : token.en}
                 </h2>
