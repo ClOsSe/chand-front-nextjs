@@ -63,8 +63,19 @@ export const menuItems: MenuItem[] = [
     label: "viewModel",
     icon: Eye,
     children: [
-      { label: "cardView", icon: Columns2 },
-      { label: "listView", icon: Rows4 },
+      { 
+        label: "cardView",
+        icon: Columns2,
+        onClick: ({ changeViewModel }) => changeViewModel("cardView"),
+        isActive: ({ viewModel }) => viewModel === "cardView",
+
+      },
+      { 
+        label: "listView",
+        icon: Rows4,
+        onClick: ({ changeViewModel }) => changeViewModel("listView"),
+        isActive: ({ viewModel }) => viewModel === "listView",
+      },
     ],
   },
   {

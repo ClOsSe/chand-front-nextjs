@@ -12,9 +12,13 @@ import type { MenuActionContext, MenuItem, Theme } from "./menu.types";
 import { MenuRow } from "./menu-row";
 import { SubMenu } from "./submenu";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { setCalendarType } from "@/store/slices/settings.slice";
+import {
+  setCalendarType,
+  setViewModelType,
+} from "@/store/slices/settings.slice";
 import { useMutation } from "@tanstack/react-query";
 import { logoutMutationOptions } from "@/services/auth/auth.queries";
+import { CalendarType, ViewModelType } from "@/types/settings";
 
 export function Menu() {
   const dispatch = useAppDispatch();
@@ -33,6 +37,7 @@ export function Menu() {
   const currentTheme: Theme = resolvedTheme === "dark" ? "dark" : "light";
 
   const calendarType = useAppSelector((state) => state.settings.calendarType);
+  const viewModel = useAppSelector((state) => state.settings.viewModel);
 
   const logoutMutation = useMutation({
     ...logoutMutationOptions,
@@ -44,8 +49,11 @@ export function Menu() {
     },
   });
 
-  const handleCalendarTypeChange = (type: "jalali" | "gregorian") => {
+  const handleCalendarTypeChange = (type: CalendarType) => {
     dispatch(setCalendarType(type));
+  };
+  const changeViewModelType = (type: ViewModelType) => {
+    dispatch(setViewModelType(type));
   };
 
   const ctx: MenuActionContext = {
@@ -58,6 +66,8 @@ export function Menu() {
     calendarType,
     setCalendarType: handleCalendarTypeChange,
     logoutUser: () => logoutMutation.mutate(),
+    viewModel,
+    changeViewModel: changeViewModelType,
   };
 
   return (

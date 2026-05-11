@@ -58,9 +58,15 @@ export function TokenList({ locale }: Props) {
       </section>
     );
   }
+  const viewModel = useAppSelector((state) => state.settings.viewModel);
 
   return (
-    <section className="grid grid-cols-2 gap-3">
+    <section
+      className={[
+        "grid gap-3",
+        viewModel === "cardView" ? "grid-cols-2" : "grid-cols-1",
+      ].join(" ")}
+    >
       {tokenList.map((token) => {
         const priceSummary = summarizePrices(token.ps, numberFormatter);
         const tokenIcon = getTokenIcon(token);

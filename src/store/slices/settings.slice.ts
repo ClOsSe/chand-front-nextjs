@@ -1,13 +1,15 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { CalendarType } from "@/types/settings";
+import type { CalendarType, ViewModelType } from "@/types/settings";
 
 type SettingsState = {
   calendarType: CalendarType;
+  viewModel: ViewModelType;
   selectedTokenKeys: string[];
 };
 
 const initialState: SettingsState = {
   calendarType: "gregorian",
+  viewModel: "cardView",
   selectedTokenKeys: [],
 };
 
@@ -19,6 +21,9 @@ const settingsSlice = createSlice({
   reducers: {
     setCalendarType(state, action: PayloadAction<CalendarType>) {
       state.calendarType = action.payload;
+    },
+    setViewModelType(state, action: PayloadAction<ViewModelType>) {
+      state.viewModel = action.payload;
     },
     toggleSelectedToken(state, action: PayloadAction<string>) {
       const tokenKey = action.payload;
@@ -37,7 +42,7 @@ const settingsSlice = createSlice({
   },
 });
 
-export const { clearSelectedTokens, setCalendarType, toggleSelectedToken } =
+export const { clearSelectedTokens, setCalendarType,setViewModelType, toggleSelectedToken } =
   settingsSlice.actions;
 
 export default settingsSlice.reducer;
