@@ -37,7 +37,6 @@ export default function middleware(request: NextRequest) {
 
   const isLoggedIn = Boolean(token);
   const isPublic = isPublicPath(pathname, locale);
-  const isHome = isLocaleHome(pathname, locale);
 
   if (!isLoggedIn && !isPublic) {
     const url = request.nextUrl.clone();
