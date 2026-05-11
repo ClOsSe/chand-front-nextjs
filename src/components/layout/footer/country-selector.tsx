@@ -14,7 +14,12 @@ import { tokensQueryOptions } from "@/services/price.queries";
 export function CountrySelector() {
   const t = useTranslations("common");
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -54,12 +59,14 @@ export function CountrySelector() {
         >
           {isPending && (
             <div className="px-4 py-3 text-sm text-(--tab-inactive-fg)">
-              {t("loadingFailed")}
+              {t("loading")}
             </div>
           )}
 
           {error && (
-            <div className="px-4 py-3 text-sm text-red-500">{t("loading")}</div>
+            <div className="px-4 py-3 text-sm text-red-500">
+              {t("loadingFailed")}
+            </div>
           )}
 
           {!isPending &&
@@ -110,7 +117,7 @@ export function CountrySelector() {
         onClick={() => setOpen((prev) => !prev)}
       >
         <Plus className="h-5 w-5" />
-        {selectedTokenKeys.length > 0 && (
+        {mounted && selectedTokenKeys.length > 0 && (
           <span className="ms-1 text-xs">{selectedTokenKeys.length}</span>
         )}
       </Button>
