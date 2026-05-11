@@ -1,15 +1,17 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type { CalendarType, ViewModelType } from "@/types/settings";
+import type { CalendarType, PriceColorType, ViewModelType } from "@/types/settings";
 
 type SettingsState = {
   calendarType: CalendarType;
   viewModel: ViewModelType;
+  priceColor: PriceColorType;
   selectedTokenKeys: string[];
 };
 
 const initialState: SettingsState = {
   calendarType: "gregorian",
   viewModel: "cardView",
+  priceColor: "red",
   selectedTokenKeys: [],
 };
 
@@ -25,7 +27,11 @@ const settingsSlice = createSlice({
     setViewModelType(state, action: PayloadAction<ViewModelType>) {
       state.viewModel = action.payload;
     },
+    setPriceColorType(state, action: PayloadAction<PriceColorType>) {
+      state.priceColor = action.payload;
+    },
     toggleSelectedToken(state, action: PayloadAction<string>) {
+      // save in localStorage
       const tokenKey = action.payload;
       const tokenIndex = state.selectedTokenKeys.indexOf(tokenKey);
 
@@ -42,7 +48,7 @@ const settingsSlice = createSlice({
   },
 });
 
-export const { clearSelectedTokens, setCalendarType,setViewModelType, toggleSelectedToken } =
+export const { clearSelectedTokens, setCalendarType,setViewModelType,setPriceColorType, toggleSelectedToken } =
   settingsSlice.actions;
 
 export default settingsSlice.reducer;

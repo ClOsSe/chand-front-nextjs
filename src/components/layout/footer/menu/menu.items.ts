@@ -19,6 +19,9 @@ import {
   Aperture,
   ExternalLink,
   LogOut,
+  ViewIcon,
+  Coins,
+  SquareArrowOutUpRight,
 } from "lucide-react";
 import type { MenuItem } from "./menu.types";
 
@@ -82,16 +85,18 @@ export const menuItems: MenuItem[] = [
     label: "priceChangeColor",
     icon: Palette,
     children: [
-      { label: "redGreen", icon: Brush },
-      { label: "greenRed", icon: Brush },
-    ],
-  },
-  {
-    label: "buyPrice",
-    icon: BanknoteArrowDown,
-    children: [
-      { label: "hidden", icon: EyeOff },
-      { label: "showIfAvailable", icon: EyeIcon },
+      { 
+        label: "red",
+        icon: Brush,
+        onClick: ({ changePriceColor }) => changePriceColor("red"),
+        isActive: ({ priceColor }) => priceColor === "red",
+       },
+      { 
+        label: "green",
+        icon: Brush,
+        onClick: ({ changePriceColor }) => changePriceColor("green"),
+        isActive: ({ priceColor }) => priceColor === "green",
+       },
     ],
   },
   {
@@ -113,12 +118,34 @@ export const menuItems: MenuItem[] = [
     ],
   },
   {
+    label: "buyPrice",
+    icon: BanknoteArrowDown,
+    children: [
+      { label: "hidden", icon: EyeOff , isActive:()=>false, },
+      { label: "showIfAvailable", icon: EyeIcon , isActive:()=>false, },
+    ],
+  },
+  
+  
+  {
     label: "socialMedia",
     icon: Send,
     children: [
-      { label: "telegram", icon: SendIcon },
-      { label: "instagram", icon: CameraIcon },
-      { label: "youtube", icon: Aperture },
+      { 
+        label: "telegram",
+        icon: SendIcon,
+        href: "https://t.me/webinaexpert",
+       },
+      { 
+        label: "instagram",
+        icon: CameraIcon,
+        href: "https://www.instagram.com/webinaexpert/",
+       },
+      { 
+        label: "youtube",
+        icon: Aperture,
+        href: "https://www.youtube.com/@webinaexpert",
+       },
     ],
   },
   {
@@ -128,7 +155,23 @@ export const menuItems: MenuItem[] = [
   },
   {
     label: "website",
-    icon: ExternalLink,
-    href: "https://webinaexpert.com",
+    icon: SquareArrowOutUpRight,
+     children: [
+      { 
+        label: "webinaexpert",
+        icon: ExternalLink,
+        href: "https://webinaexpert.com",
+       },
+      { 
+        label: "NowChandVUE",
+        icon: ExternalLink,
+        href: "https://chand.chandforandroid.workers.dev/",
+       },
+      { 
+        label: "NowChandNext",
+        icon: ExternalLink,
+        href: "https://chand-front-nextjs.webinaexpert.workers.dev/",
+       },
+    ],
   },
 ];

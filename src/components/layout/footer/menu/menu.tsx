@@ -14,11 +14,12 @@ import { SubMenu } from "./submenu";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import {
   setCalendarType,
+  setPriceColorType,
   setViewModelType,
 } from "@/store/slices/settings.slice";
 import { useMutation } from "@tanstack/react-query";
 import { logoutMutationOptions } from "@/services/auth/auth.queries";
-import { CalendarType, ViewModelType } from "@/types/settings";
+import { CalendarType, PriceColorType, ViewModelType } from "@/types/settings";
 
 export function Menu() {
   const dispatch = useAppDispatch();
@@ -38,6 +39,7 @@ export function Menu() {
 
   const calendarType = useAppSelector((state) => state.settings.calendarType);
   const viewModel = useAppSelector((state) => state.settings.viewModel);
+  const priceColor = useAppSelector((state) => state.settings.priceColor);
 
   const logoutMutation = useMutation({
     ...logoutMutationOptions,
@@ -55,6 +57,9 @@ export function Menu() {
   const changeViewModelType = (type: ViewModelType) => {
     dispatch(setViewModelType(type));
   };
+  const changePriceColorType = (type: PriceColorType) => {
+    dispatch(setPriceColorType(type));
+  };
 
   const ctx: MenuActionContext = {
     locale,
@@ -68,6 +73,8 @@ export function Menu() {
     logoutUser: () => logoutMutation.mutate(),
     viewModel,
     changeViewModel: changeViewModelType,
+    priceColor,
+    changePriceColor: changePriceColorType,
   };
 
   return (

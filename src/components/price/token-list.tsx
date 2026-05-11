@@ -21,6 +21,10 @@ export function TokenList({ locale }: Props) {
   const selectedTokenKeys = useAppSelector(
     (state) => state.settings.selectedTokenKeys,
   );
+  const viewModel = useAppSelector((state) => state.settings.viewModel);
+
+  const priceColor = useAppSelector((state) => state.settings.priceColor);
+
   const tokenList =
     selectedTokenKeys.length > 0
       ? (tokens ?? []).filter((token) =>
@@ -58,7 +62,6 @@ export function TokenList({ locale }: Props) {
       </section>
     );
   }
-  const viewModel = useAppSelector((state) => state.settings.viewModel);
 
   return (
     <section
@@ -86,7 +89,14 @@ export function TokenList({ locale }: Props) {
                 />
                 {priceSummary && (
                   <div className="text-end">
-                    <p className="font-medium text-md sm:text-2xl text-red-500 text-left">
+                    <p
+                      className={[
+                        "font-medium text-md sm:text-2xl  text-left",
+                        priceColor === "red"
+                          ? "text-red-500"
+                          : "text-green-500",
+                      ].join(" ")}
+                    >
                       {priceSummary.changeWithSeparate}
                     </p>
                     <p className="font-bold text-lg sm:text-2xl text-(--foreground)">

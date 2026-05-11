@@ -24,7 +24,12 @@ export function SubMenu({ items, t, ctx, isRtl }: Props) {
           <button
             key={child.label}
             type="button"
-            onClick={() => child.onClick?.(ctx)}
+            onClick={() => {
+              child.onClick?.(ctx);
+              if (child.href) {
+                window.open(child.href, "_blank");
+              }
+            }}
             className={[
               "flex w-full items-center justify-between border-b border-(--menu-border) px-4 py-3 text-xs sm:text-sm transition  hover:cursor-pointer ",
               isActive
