@@ -13,6 +13,7 @@ import { MainPriceChart } from "./main-price-chart";
 import PriceSummary from "./price-symmary";
 import { getDisplayErrorMessage } from "@/services/api-error";
 import { toast } from "sonner";
+import { formatPriceChange } from "@/lib/price/format-price";
 
 type Props = {
   locale: Locale;
@@ -52,11 +53,6 @@ export function TokenList({ locale }: Props) {
           selectedTokenKeys.includes(getTokenKey(token)),
         )
       : (tokens ?? []);
-  const numberFormatter = new Intl.NumberFormat(
-    locale === "fa" ? "fa-IR" : "en-US",
-  );
-  const isRtl = locale === "fa";
-
   if (priceError) {
     return (
       <section
@@ -94,7 +90,6 @@ export function TokenList({ locale }: Props) {
         ].join(" ")}
       >
         {tokenList.map((token) => {
-          const priceSummary = summarizePrices(token.ps, numberFormatter);
           const tokenIcon = getTokenIcon(token);
           return (
             <article
@@ -151,10 +146,7 @@ export function TokenList({ locale }: Props) {
   );
 }
 
-export function summarizePrices(
-  prices: PriceList[],
-  formatter: Intl.NumberFormat,
-) {
+export function summarizePrices(prices: PriceList[], locale: Locale) {
   if (!prices.length) {
     return null;
   }
@@ -175,14 +167,13 @@ export function summarizePrices(
   }
 
   const change = latestValue - oldestValue;
-  const trend = change > 0 ? "↑" : change < 0 ? "↓" : "→";
 
   return {
     high,
     low,
     last: latestValue,
     change,
-    changeWithSeparate: `${trend}${formatter.format(Math.abs(change))}`,
+    changeWithSeparate: formatPriceChange(change, locale),
   };
 }
 

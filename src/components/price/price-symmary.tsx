@@ -2,6 +2,7 @@ import { useAppSelector } from "@/store/hooks";
 import { summarizePrices } from "./token-list";
 import type { Locale } from "@/config/i18n";
 import { Token } from "@/types/price";
+import { formatPrice } from "@/lib/price/format-price";
 
 type Props = {
   token: Token;
@@ -9,11 +10,8 @@ type Props = {
 };
 export default function PriceSummary({ token, locale }: Props) {
   const isRtl = locale === "fa";
-  const numberFormatter = new Intl.NumberFormat(
-    locale === "fa" ? "fa-IR" : "en-US",
-  );
 
-  const priceSummary = summarizePrices(token.ps, numberFormatter);
+  const priceSummary = summarizePrices(token.ps, locale);
 
   const priceColor = useAppSelector((state) => state.settings.priceColor);
 
@@ -36,7 +34,7 @@ export default function PriceSummary({ token, locale }: Props) {
               isRtl ? "text-right" : "text-left",
             ].join(" ")}
           >
-            {numberFormatter.format(priceSummary.last)}
+            {formatPrice(priceSummary.last, locale)}
           </p>
         </div>
       )}

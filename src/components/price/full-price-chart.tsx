@@ -14,6 +14,7 @@ import {
 import type { Locale } from "@/config/i18n";
 import type { PriceList } from "@/types/price";
 import { toPriceChartData } from "@/lib/price/chart-data";
+import { formatPrice } from "@/lib/price/format-price";
 
 type Props = {
   prices: PriceList[];
@@ -69,7 +70,7 @@ export function FullPriceChart({ prices, locale }: Props) {
 
           <YAxis
             domain={["dataMin", "dataMax"]}
-            tickFormatter={(value) => formatter.format(value)}
+            tickFormatter={(value) => formatPrice(Number(value), locale)}
             tickLine={false}
             axisLine={false}
             width={80}
@@ -91,7 +92,7 @@ export function FullPriceChart({ prices, locale }: Props) {
                 return "";
               }
 
-              return formatter.format(value);
+              return formatPrice(value, locale);
             }}
             labelFormatter={(label) =>
               locale === "fa" ? `زمان: ${label}` : `Time: ${label}`
