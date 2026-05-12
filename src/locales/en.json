@@ -7,6 +7,7 @@
     "priceNotAvailable": "No prices are available.",
     "loadingPrices": "Loading prices...",
     "priceServiceFailed": "Price service failed",
+    "priceUpdateFailed": "Failed to update prices",
     "errors": {
       "unauthorized": "You must be logged in to continue"
     }
