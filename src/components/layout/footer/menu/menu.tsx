@@ -61,6 +61,10 @@ export function Menu() {
   const viewModel = useAppSelector((state) => state.settings.viewModel);
   const priceColor = useAppSelector((state) => state.settings.priceColor);
 
+  useEffect(() => {
+    localStorage.setItem("SelectedPriceColor", JSON.stringify(priceColor));
+  }, [priceColor]);
+
   const logoutMutation = useMutation({
     ...logoutMutationOptions,
     onSuccess: () => {
