@@ -9,6 +9,30 @@ const loadSelectedTokenKeys = (): string[] => {
     return [];
   }
 };
+const loadSelectedViewModel = (): ViewModelType => {
+  try {
+    const saved = localStorage.getItem("SelectedViewModel");
+    return saved ? JSON.parse(saved) : 'listView';
+  } catch {
+    return "listView";
+  }
+};
+const loadSelectedPriceColor = (): PriceColorType => {
+  try {
+    const saved = localStorage.getItem("SelectedPriceColor");
+    return saved ? JSON.parse(saved) : 'red';
+  } catch {
+    return "red";
+  }
+};
+const loadSelectedCalendarType = (): CalendarType => {
+  try {
+    const saved = localStorage.getItem("SelectedCalendarType");
+    return saved ? JSON.parse(saved) : 'gregorian';
+  } catch {
+    return "gregorian";
+  }
+};
 
 type SettingsState = {
   calendarType: CalendarType;
@@ -18,9 +42,9 @@ type SettingsState = {
 };
 
 const initialState: SettingsState = {
-  calendarType: "gregorian",
-  viewModel: "cardView",
-  priceColor: "red",
+  calendarType: loadSelectedCalendarType(),
+  viewModel: loadSelectedViewModel(),
+  priceColor: loadSelectedPriceColor(),
   selectedTokenKeys: loadSelectedTokenKeys(),
 };
 
