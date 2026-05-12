@@ -11,6 +11,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { MainPriceChart } from "./main-price-chart";
 import PriceSummary from "./price-symmary";
+import { getDisplayErrorMessage } from "@/services/api-error";
 
 type Props = {
   locale: Locale;
@@ -20,7 +21,7 @@ export function TokenList({ locale }: Props) {
   const t = useTranslations("common");
   const [selectedToken, setSelectedToken] = useState<Token | null>(null);
   const { data: tokens, error, isPending } = useQuery(tokensQueryOptions);
-  const priceError = getErrorMessage(error);
+  const priceError = error ? getDisplayErrorMessage(error, t) : null;
   const selectedTokenKeys = useAppSelector(
     (state) => state.settings.selectedTokenKeys,
   );

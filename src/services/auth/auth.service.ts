@@ -45,7 +45,7 @@ export async function forgotPassword(
   payload: ForgotPasswordPayload
 ): Promise<{ message: string }> {
   const { data } = await api.post<{ message: string }>(
-    "api/auth/forgot-password",
+    "/api/auth/forgot-password",
     payload
   );
 

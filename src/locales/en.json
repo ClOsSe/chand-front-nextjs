@@ -61,15 +61,28 @@
     "repeatPassword": "Repeat Password",
     "errors": {
       "emptyEmail": "Enter Your Email",
-      "requiredEmail": "Enter is Required",
+      "requiredEmail": "Email is Required",
       "invalidEmail": "Email is Not Valid",
       "emptyPassword": "Enter Your Password",
       "invalidPassword": "Password is Not Valid",
       "emptyRepeatPassword": "Repeat Your Password",
       "invalidRepeatPassword": "Repeat Password is Not Valid",
       "passwordMinLength": "Passwords Should Be at least 8 Characters Long",
-      "requiredConfirmPassword": "Repeat Password is required",
-      "passwordsNotMatch": "Repeat Password is Not Valid"
+      "requiredConfirmPassword": "Repeat Password is Required",
+      "passwordsNotMatch": "Passwords Do Not Match",
+      "unauthorized": "You must be logged in to continue",
+      "forbidden": "You do not have permission to perform this action",
+      "invalidOrExpiredToken": "Your session has expired. Please log in again",
+      "invalidEmailOrPassword": "Incorrect email or password",
+      "userAlreadyExists": "A user with this email already exists",
+      "invalidInput": "The entered information is not valid",
+      "priceServiceFailed": "Failed to fetch prices",
+      "serverError": "A server error occurred. Please try again later",
+      "network": "Unable to connect to the server. Please check your internet connection",
+      "timeout": "The server response timed out. Please try again",
+      "notFound": "The requested resource was not found",
+      "conflict": "This request cannot be completed due to the current state",
+      "unknown": "An unknown error occurred"
     }
   }
 }

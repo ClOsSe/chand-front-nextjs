@@ -11,6 +11,7 @@ import { registerMutationOptions } from "@/services/auth/auth.queries";
 
 import { useForm } from "react-hook-form";
 import z from "zod";
+import { getDisplayErrorMessage } from "@/services/api-error";
 
 const createRegisterFormSchema = (t: (key: string) => string) => {
   return z
@@ -121,7 +122,7 @@ export default function RegisterPage() {
           </div>
           {registerMutation.isError && (
             <p className="mt-3 text-sm text-red-500">
-              {registerMutation.error.message}
+              {getDisplayErrorMessage(registerMutation.error, t)}
             </p>
           )}
         </div>

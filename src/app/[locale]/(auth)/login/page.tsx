@@ -11,6 +11,8 @@ import { useRouter } from "@/i18n/navigation";
 import { useForm } from "react-hook-form";
 import z from "zod";
 
+import { getDisplayErrorMessage } from "@/services/api-error";
+
 const createLoginSchema = (t: (key: string) => string) => {
   return z.object({
     email: z
@@ -27,6 +29,7 @@ type LoginFormValues = z.infer<ReturnType<typeof createLoginSchema>>;
 export default function LoginPage() {
   const t = useTranslations("auth");
   const router = useRouter();
+
   const loginMutation = useMutation({
     ...loginMutationOptions,
     onSuccess: () => {
@@ -36,6 +39,11 @@ export default function LoginPage() {
       console.error("[login]", error);
     },
   });
+
+  const loginError = loginMutation.isError
+    ? getDisplayErrorMessage(loginMutation.error, t)
+    : null;
+
   const loginSchema = createLoginSchema(t);
 
   const {
@@ -98,6 +106,11 @@ export default function LoginPage() {
             />
           </div>
         </div>
+        {loginError && (
+          <p role="alert" className="mt-3 text-sm text-red-500">
+            {loginError}
+          </p>
+        )}
         <div className="grid grid-flow-row">
           <Button
             variant="primary"
