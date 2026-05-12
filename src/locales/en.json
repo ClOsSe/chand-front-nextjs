@@ -6,7 +6,10 @@
     "loadingFailed": "Loading Failed",
     "priceNotAvailable": "No prices are available.",
     "loadingPrices": "Loading prices...",
-    "priceServiceFailed": "Price service failed"
+    "priceServiceFailed": "Price service failed",
+    "errors": {
+      "unauthorized": "You must be logged in to continue"
+    }
   },
   "theme": {
     "light": "Light Mode",

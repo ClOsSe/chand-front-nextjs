@@ -6,7 +6,10 @@
     "loadingFailed": "خطا در بروزرسانی",
     "priceNotAvailable": "لیست قیمت ها در دسترس نیست",
     "loadingPrices": "در حال دریافت قیمت ها...",
-    "priceServiceFailed": "سرویس دریافت قیمت با خطا مواجه شد"
+    "priceServiceFailed": "سرویس دریافت قیمت با خطا مواجه شد",
+    "errors": {
+      "unauthorized": "برای ادامه باید وارد حساب کاربری شوید"
+    }
   },
   "theme": {
     "light": "تم روشن",
