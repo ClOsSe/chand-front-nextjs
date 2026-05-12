@@ -1,9 +1,10 @@
 "use client";
 
 import {
+  Area,
+  AreaChart,
   CartesianGrid,
   Line,
-  LineChart,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -28,10 +29,12 @@ export function FullPriceChart({ prices, locale }: Props) {
 
   const formatter = new Intl.NumberFormat(locale === "fa" ? "fa-IR" : "en-US");
 
+  const gradientId = "fullPriceGradient";
+
   return (
     <div className="h-full w-full">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart
+        <AreaChart
           data={data}
           margin={{
             top: 10,
@@ -40,6 +43,14 @@ export function FullPriceChart({ prices, locale }: Props) {
             bottom: 10,
           }}
         >
+          <defs>
+            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="currentColor" stopOpacity={0.25} />
+
+              <stop offset="100%" stopColor="currentColor" stopOpacity={0.02} />
+            </linearGradient>
+          </defs>
+
           <CartesianGrid
             stroke="currentColor"
             strokeOpacity={0.08}
@@ -87,6 +98,14 @@ export function FullPriceChart({ prices, locale }: Props) {
             }
           />
 
+          <Area
+            type="monotone"
+            dataKey="price"
+            stroke="none"
+            fill={`url(#${gradientId})`}
+            isAnimationActive={false}
+          />
+
           <Line
             type="monotone"
             dataKey="price"
@@ -98,7 +117,7 @@ export function FullPriceChart({ prices, locale }: Props) {
             }}
             isAnimationActive
           />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );
