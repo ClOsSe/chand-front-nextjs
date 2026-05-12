@@ -17,8 +17,8 @@ export function MiniPriceChart({ prices }: Props) {
   }
 
   return (
-    <div className="h-12 w-full">
-      <ResponsiveContainer width="100%" height="100%">
+    <div className="h-12 w-full  min-w-0">
+      <ResponsiveContainer width="100%" height={48}>
         <LineChart data={data}>
           <YAxis domain={["dataMin", "dataMax"]} hide />
           <Line
