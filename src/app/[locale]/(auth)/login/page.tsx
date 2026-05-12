@@ -9,6 +9,8 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+
 import z from "zod";
 
 import { getDisplayErrorMessage } from "@/services/api-error";
@@ -33,9 +35,17 @@ export default function LoginPage() {
   const loginMutation = useMutation({
     ...loginMutationOptions,
     onSuccess: () => {
-      router.push("/");
+      toast.success(t("loginSuccess"), {
+        description: t("welcomeBack"),
+      });
+      setTimeout(() => {
+        router.push("/");
+      }, 1200);
     },
     onError: (error) => {
+      toast.error(t("loginFailed"), {
+        description: t("invalidCredentials"),
+      });
       console.error("[login]", error);
     },
   });

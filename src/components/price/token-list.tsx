@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 import { MainPriceChart } from "./main-price-chart";
 import PriceSummary from "./price-symmary";
 import { getDisplayErrorMessage } from "@/services/api-error";
+import { toast } from "sonner";
 
 type Props = {
   locale: Locale;
@@ -22,6 +23,15 @@ export function TokenList({ locale }: Props) {
   const [selectedToken, setSelectedToken] = useState<Token | null>(null);
   const { data: tokens, error, isPending } = useQuery(tokensQueryOptions);
   const priceError = error ? getDisplayErrorMessage(error, t) : null;
+
+  useEffect(() => {
+    if (priceError) {
+      toast.error(t("priceUpdateFailed"), {
+        description: priceError,
+      });
+    }
+  }, [priceError, t]);
+
   const selectedTokenKeys = useAppSelector(
     (state) => state.settings.selectedTokenKeys,
   );
@@ -139,14 +149,6 @@ export function TokenList({ locale }: Props) {
       />
     </>
   );
-}
-
-function getErrorMessage(error: unknown) {
-  if (error instanceof Error) {
-    return error.message;
-  }
-
-  return null;
 }
 
 export function summarizePrices(

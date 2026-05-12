@@ -12,6 +12,7 @@ import { registerMutationOptions } from "@/services/auth/auth.queries";
 import { useForm } from "react-hook-form";
 import z from "zod";
 import { getDisplayErrorMessage } from "@/services/api-error";
+import { toast } from "sonner";
 
 const createRegisterFormSchema = (t: (key: string) => string) => {
   return z
@@ -41,9 +42,17 @@ export default function RegisterPage() {
   const registerMutation = useMutation({
     ...registerMutationOptions,
     onSuccess: () => {
-      router.push("/");
+      toast.success(t("registerSuccess"), {
+        description: t("accountCreated"),
+      });
+      setTimeout(() => {
+        router.push("/");
+      }, 1200);
     },
     onError: (error) => {
+      toast.error(t("registerFailed"), {
+        description: t("unexpectedError"),
+      });
       console.error("[register]", error);
     },
   });

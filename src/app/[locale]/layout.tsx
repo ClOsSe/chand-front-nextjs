@@ -7,6 +7,8 @@ import { getMessages, setRequestLocale } from "next-intl/server";
 import { isLocale, locales } from "@/config/i18n";
 import { AppProviders } from "@/providers/app";
 
+import { Toaster } from "sonner";
+
 export const metadata: Metadata = {
   title: "Chand",
   description: "Modern financial market tracking application",
@@ -41,6 +43,7 @@ export default async function LocaleLayout({ children, params }: Props) {
       <AppProviders>
         <NextIntlClientProvider locale={locale} messages={messages}>
           {children}
+          <Toaster richColors position="top-center" />
         </NextIntlClientProvider>
       </AppProviders>
     </div>

@@ -9,6 +9,7 @@ import { useTranslations } from "next-intl";
 import { useRouter } from "@/i18n/navigation";
 
 import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 import z from "zod";
 
 const createForgetPasswordSchema = (t: (key: string) => string) => {
@@ -19,19 +20,28 @@ const createForgetPasswordSchema = (t: (key: string) => string) => {
       .email(t("errors.invalidEmail")),
   });
 };
+
 type ForgetPasswordFormValues = z.infer<
   ReturnType<typeof createForgetPasswordSchema>
 >;
 export default function ForgetPage() {
   const t = useTranslations("auth");
   const router = useRouter();
+
   const forgetPassMutation = useMutation({
     ...forgotPasswordMutationOptions,
     onSuccess: () => {
-      router.push("/login");
+      toast.success(t("recoveryEmailSent"), {
+        description: t("checkYourInbox"),
+      });
+
+      setTimeout(() => {
+        router.push("/login");
+      }, 1200);
     },
     onError: (error) => {
-      console.error("[register]", error);
+      toast.error(t("errors.unknown"));
+      console.error("[forgot-password]", error);
     },
   });
   const forgetPasswordSchema = createForgetPasswordSchema(t);
