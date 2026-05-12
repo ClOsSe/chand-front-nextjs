@@ -10,6 +10,10 @@ export function Calendar() {
   const [now, setNow] = useState(() => new Date());
 
   useEffect(() => {
+    localStorage.setItem("SelectedCalendarType", JSON.stringify(calendarType));
+  }, [calendarType]);
+
+  useEffect(() => {
     const timer = setInterval(() => {
       setNow(new Date());
     }, 30_000);

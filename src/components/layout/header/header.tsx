@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/navigation";
-import { Calendar } from "./calendar";
 import { getTranslations } from "next-intl/server";
+import { HeaderCalendar } from "./header-calendar";
+
 export default async function Header() {
   const t = await getTranslations("common");
   return (
@@ -10,7 +11,7 @@ export default async function Header() {
           {t("title")}
         </Link>
         <div className="flex items-center gap-2">
-          <Calendar />
+          <HeaderCalendar />
         </div>
       </div>
     </header>
