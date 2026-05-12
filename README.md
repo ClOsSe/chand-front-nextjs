@@ -1,5 +1,6 @@
 # Chand Front Next.js
 Address : https://chand-front-nextjs.webinaexpert.workers.dev
+----
 رابط کاربری وب Chand برای نمایش و پیگیری قیمت بازارهای مالی. پروژه با App Router در Next.js ساخته شده، مسیرهای چندزبانه دارد و برای استقرار روی Cloudflare Workers از OpenNext استفاده می‌کند.
 
 ## امکانات اصلی
