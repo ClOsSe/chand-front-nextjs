@@ -61,6 +61,7 @@
     "recoverYourPasswordDescription": "برای بازیابی رمزعبور، ایمیل خود را در زیر وارد کنید",
     "exampleEmail": "example@gmail.com",
     "send": "ارسال",
+    "sending": "درحال ارسال...",
     "createAccountTitle": "ساخت اکانت",
     "createAccountDescription": "ایمیل خود را وارد کنید و یک رمزعبور قوی انتخاب کنید",
     "repeatPassword": "تکرار رمزعبور",
