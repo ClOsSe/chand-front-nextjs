@@ -9,7 +9,9 @@
     "priceServiceFailed": "Price service failed",
     "priceUpdateFailed": "Failed to update prices",
     "errors": {
-      "unauthorized": "You must be logged in to continue"
+      "unauthorized": "You must be logged in to continue",
+      "notFound": "The requested resource was not found",
+      "network": "Unable to connect to the server. Please check your internet connection"
     }
   },
   "theme": {
