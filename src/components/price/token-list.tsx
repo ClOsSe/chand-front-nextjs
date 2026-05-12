@@ -99,7 +99,12 @@ export function TokenList({ locale }: Props) {
               key={`${token.ty}-${token.ab}`}
               className="rounded-2xl border border-(--border) p-4  h-35 sm:h-48 shadow-2xl/15"
             >
-              <div className="flex gap-0 h-full ">
+              <div
+                className={[
+                  "flex gap-0 h-full ",
+                  viewModel === "cardView" ? "justify-between" : "",
+                ].join(" ")}
+              >
                 <div className="flex-nonw grid content-between gap-4 basis-1/4 ">
                   <div
                     role="img"
