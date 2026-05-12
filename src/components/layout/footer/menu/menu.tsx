@@ -63,7 +63,8 @@ export function Menu() {
 
   useEffect(() => {
     localStorage.setItem("SelectedPriceColor", JSON.stringify(priceColor));
-  }, [priceColor]);
+    localStorage.setItem("SelectedViewModel", JSON.stringify(viewModel));
+  }, [priceColor, viewModel]);
 
   const logoutMutation = useMutation({
     ...logoutMutationOptions,
