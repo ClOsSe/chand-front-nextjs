@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { authCookieOptions } from "@/config/auth";
 import { safeJson, proxyServerError } from "../../_utils/proxy-error";
 const BACKEND_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -24,13 +25,7 @@ export async function POST(request: Request) {
     });
 
     if (backendResponse.ok && data.token) {
-      response.cookies.set("token", data.token, {
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        path: "/",
-        maxAge: 60 * 60 * 24 * 7,
-      });
+      response.cookies.set("token", data.token, authCookieOptions);
     }
 
     return response;

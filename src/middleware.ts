@@ -1,6 +1,7 @@
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 
+import { authCookieOptions } from "@/config/auth";
 import { defaultLocale, locales, type Locale } from "@/config/i18n";
 
 const intlMiddleware = createMiddleware({
@@ -50,6 +51,10 @@ export default function middleware(request: NextRequest) {
     url.pathname = `/${locale}`;
 
     return NextResponse.redirect(url);
+  }
+
+  if (token) {
+    intlResponse.cookies.set("token", token, authCookieOptions);
   }
 
   return intlResponse;
