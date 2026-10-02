@@ -1,7 +1,6 @@
 import createMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
 
-import { authCookieOptions } from "@/config/auth";
 import { defaultLocale, locales, type Locale } from "@/config/i18n";
 
 const intlMiddleware = createMiddleware({
@@ -22,10 +21,6 @@ function getLocale(pathname: string): Locale {
 
 function isPublicPath(pathname: string, locale: Locale) {
   return PUBLIC_PATHS.some((path) => pathname === `/${locale}${path}`);
-}
-
-function isLocaleHome(pathname: string, locale: Locale) {
-  return pathname === `/${locale}`;
 }
 
 export default function middleware(request: NextRequest) {
@@ -51,10 +46,6 @@ export default function middleware(request: NextRequest) {
     url.pathname = `/${locale}`;
 
     return NextResponse.redirect(url);
-  }
-
-  if (token) {
-    intlResponse.cookies.set("token", token, authCookieOptions);
   }
 
   return intlResponse;

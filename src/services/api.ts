@@ -1,4 +1,5 @@
 import axios from "axios";
+import { defaultLocale, isLocale } from "@/config/i18n";
 import { normalizeApiError } from "./api-error";
 
 export const api = axios.create({
@@ -12,9 +13,28 @@ export const api = axios.create({
   },
 });
 
+let isRedirectingToLogin = false;
+
 api.interceptors.response.use(
   (response) => response,
   (error) => {
-    return Promise.reject(normalizeApiError(error));
+    const normalized = normalizeApiError(error);
+
+    if (
+      normalized.status === 401 &&
+      error.config?.url === "/api/prices/latest" &&
+      typeof window !== "undefined" &&
+      !isRedirectingToLogin
+    ) {
+      isRedirectingToLogin = true;
+      const pathLocale = window.location.pathname.split("/")[1];
+      const locale = isLocale(pathLocale) ? pathLocale : defaultLocale;
+
+      // The API response has cleared the HttpOnly cookie. Reload to also
+      // discard cached protected pages and query data from the old session.
+      window.location.replace(`/${locale}/login`);
+    }
+
+    return Promise.reject(normalized);
   }
 );

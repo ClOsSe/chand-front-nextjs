@@ -296,8 +296,10 @@ src/app/api/prices/latest/route.ts
 
 - `login` و `register` در صورت دریافت token از backend، cookie به نام `token` تنظیم می‌کنند.
 - cookie به صورت `httpOnly` و `sameSite: "lax"` تنظیم می‌شود.
+- توکن و cookie از زمان ورود یا ثبت‌نام ۳۶۵ روز اعتبار دارند؛ refresh token وجود ندارد و بازدید از صفحات اعتبار را تمدید نمی‌کند.
 - `logout` cookie را حذف می‌کند.
 - `prices/latest` token را از cookie می‌خواند و به backend پاس می‌دهد.
+- اگر backend توکن را با خطای `401` رد کند، cookie حذف می‌شود و کاربر برای ورود مجدد به صفحه login هدایت می‌شود.
 
 مدیریت خطاهای API:
 

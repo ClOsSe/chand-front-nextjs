@@ -1,6 +1,5 @@
-// Browsers cap cookie lifetime at 400 days, so the cookie is re-issued on
-// every page visit (see middleware.ts) to keep the user logged in indefinitely.
-export const AUTH_COOKIE_MAX_AGE = 60 * 60 * 24 * 400;
+// Match the backend token lifetime: one year from login, without renewal.
+export const AUTH_COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 export const authCookieOptions = {
   httpOnly: true,

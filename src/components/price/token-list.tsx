@@ -11,7 +11,7 @@ import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 import { MainPriceChart } from "./main-price-chart";
 import PriceSummary from "./price-symmary";
-import { getDisplayErrorMessage } from "@/services/api-error";
+import { AppError, getDisplayErrorMessage } from "@/services/api-error";
 import { toast } from "sonner";
 import { formatPriceChange } from "@/lib/price/format-price";
 
@@ -21,9 +21,12 @@ type Props = {
 
 export function TokenList({ locale }: Props) {
   const t = useTranslations("common");
+  const tErrors = useTranslations("auth");
   const [selectedToken, setSelectedToken] = useState<Token | null>(null);
   const { data: tokens, error, isPending } = useQuery(tokensQueryOptions);
-  const priceError = error ? getDisplayErrorMessage(error, t) : null;
+  const isSessionExpired = error instanceof AppError && error.status === 401;
+  const priceError =
+    error && !isSessionExpired ? getDisplayErrorMessage(error, tErrors) : null;
 
   useEffect(() => {
     if (priceError) {
@@ -65,7 +68,7 @@ export function TokenList({ locale }: Props) {
     );
   }
 
-  if (isPending) {
+  if (isPending || isSessionExpired) {
     return (
       <section className="rounded-lg border border-(--border) p-4">
         {t("loadingPrices")}
